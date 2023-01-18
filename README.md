@@ -3,7 +3,7 @@ This is the private repository made for CPTS 322 semester long project.
 
 Group Members: 
   Sarah Hoppe, 11665266, sarah.hoppe@wsu.edu;
-  Boax Glassberg, boaz.glassberg@wsu.edu;
+  Boax Glassberg, 11710418, boaz.glassberg@wsu.edu;
   Grace Covarrubias, 11608235, grace.covarrubias@wsu.edu;
   Tywin Cary, 11722344, tywin.cary@wsu.edu;
   David Hofsetz, 11751021, david.hofsetz@wsu.edu;
