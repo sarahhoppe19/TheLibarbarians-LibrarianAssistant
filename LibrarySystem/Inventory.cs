@@ -11,15 +11,20 @@ namespace LibrarySystem
         Dictionary<int, Book> BookDatabase = new Dictionary<int, Book>();
 
         // Creates a book from input - returns true if successful
-        public bool CreateBook(int isbn, string name, string description, string author,
+        public bool CreateBook(int isbn, string title, string description, string author,
             string publisher, string genre, int stock, double price)
         {
             if (BookDatabase.ContainsKey(isbn))
                 return false;
             BookDatabase.Add(isbn, new Book(
-                isbn, name, description, author, publisher, genre, stock, price));
+                isbn, title, description, author, publisher, genre, stock, price));
             return true;
         }
-        public Book GetBook(int isbn) {  return BookDatabase[isbn]; }
+        // Gets book by isbn (returns null if not found)
+        public Book GetBook(int isbn) 
+        {
+            if (!BookDatabase.ContainsKey(isbn)) return null;
+            return BookDatabase[isbn]; 
+        }
     }
 }

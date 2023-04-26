@@ -32,6 +32,7 @@
             loginToolStripMenuItem = new ToolStripMenuItem();
             inventoryToolStripMenuItem = new ToolStripMenuItem();
             addBookToolStripMenuItem = new ToolStripMenuItem();
+            editBookToolStripMenuItem = new ToolStripMenuItem();
             NextButton = new Button();
             SearchBox = new TextBox();
             PrevButton = new Button();
@@ -83,7 +84,7 @@
             // 
             // inventoryToolStripMenuItem
             // 
-            inventoryToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { addBookToolStripMenuItem });
+            inventoryToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { addBookToolStripMenuItem, editBookToolStripMenuItem });
             inventoryToolStripMenuItem.Name = "inventoryToolStripMenuItem";
             inventoryToolStripMenuItem.Size = new Size(118, 34);
             inventoryToolStripMenuItem.Text = "Inventory";
@@ -94,6 +95,12 @@
             addBookToolStripMenuItem.Size = new Size(221, 40);
             addBookToolStripMenuItem.Text = "Add Book";
             addBookToolStripMenuItem.Click += addBookToolStripMenuItem_Click;
+            // 
+            // editBookToolStripMenuItem
+            // 
+            editBookToolStripMenuItem.Name = "editBookToolStripMenuItem";
+            editBookToolStripMenuItem.Size = new Size(221, 40);
+            editBookToolStripMenuItem.Text = "Edit Book";
             // 
             // NextButton
             // 
@@ -132,9 +139,9 @@
             // 
             // CoverImageBox
             // 
-            CoverImageBox.Location = new Point(1355, 43);
+            CoverImageBox.Location = new Point(1330, 43);
             CoverImageBox.Name = "CoverImageBox";
-            CoverImageBox.Size = new Size(450, 500);
+            CoverImageBox.Size = new Size(500, 500);
             CoverImageBox.TabIndex = 5;
             CoverImageBox.TabStop = false;
             // 
@@ -423,5 +430,6 @@
         private Button AddPhotoButton;
         private Button SearchButton;
         private OpenFileDialog openFileDialog1;
+        private ToolStripMenuItem editBookToolStripMenuItem;
     }
 }
