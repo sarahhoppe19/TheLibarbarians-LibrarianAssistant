@@ -58,6 +58,7 @@
             DescriptionBox = new TextBox();
             DescEntryBox = new TextBox();
             AddPhotoButton = new Button();
+            SearchButton = new Button();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)CoverImageBox).BeginInit();
             SuspendLayout();
@@ -89,7 +90,7 @@
             // addBookToolStripMenuItem
             // 
             addBookToolStripMenuItem.Name = "addBookToolStripMenuItem";
-            addBookToolStripMenuItem.Size = new Size(315, 40);
+            addBookToolStripMenuItem.Size = new Size(221, 40);
             addBookToolStripMenuItem.Text = "Add Book";
             addBookToolStripMenuItem.Click += addBookToolStripMenuItem_Click;
             // 
@@ -108,8 +109,6 @@
             SearchBox.Name = "SearchBox";
             SearchBox.Size = new Size(524, 35);
             SearchBox.TabIndex = 2;
-            SearchBox.Text = "Search...";
-            SearchBox.TextChanged += SearchBox_TextChanged;
             // 
             // PrevButton
             // 
@@ -127,6 +126,8 @@
             PageTextBox.Name = "PageTextBox";
             PageTextBox.Size = new Size(86, 35);
             PageTextBox.TabIndex = 4;
+            PageTextBox.Text = "1/1";
+            PageTextBox.TextAlign = HorizontalAlignment.Center;
             // 
             // CoverImageBox
             // 
@@ -189,6 +190,7 @@
             SaveBookButton.TabIndex = 11;
             SaveBookButton.Text = "Save Book";
             SaveBookButton.UseVisualStyleBackColor = true;
+            SaveBookButton.Visible = false;
             SaveBookButton.Click += SaveBookButton_Click;
             // 
             // TitleBox
@@ -328,11 +330,22 @@
             AddPhotoButton.UseVisualStyleBackColor = true;
             AddPhotoButton.Visible = false;
             // 
+            // SearchButton
+            // 
+            SearchButton.Location = new Point(632, 41);
+            SearchButton.Name = "SearchButton";
+            SearchButton.Size = new Size(83, 40);
+            SearchButton.TabIndex = 27;
+            SearchButton.Text = "Search";
+            SearchButton.UseVisualStyleBackColor = true;
+            SearchButton.Click += SearchButton_Click;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1896, 1016);
+            Controls.Add(SearchButton);
             Controls.Add(AddPhotoButton);
             Controls.Add(DescEntryBox);
             Controls.Add(DescriptionBox);
@@ -402,5 +415,6 @@
         private TextBox DescriptionBox;
         private TextBox DescEntryBox;
         private Button AddPhotoButton;
+        private Button SearchButton;
     }
 }

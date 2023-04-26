@@ -9,12 +9,10 @@ namespace LibrarySystem
             InitializeComponent();
         }
 
-
-        private void SearchBox_TextChanged(object sender, EventArgs e)
+        private void SearchButton_Click(object sender, EventArgs e)
         {
             ResultBox1.Text = SearchBox.Text;
         }
-
         // Add Book Menu Button Fuctionality
         private void addBookToolStripMenuItem_Click(object sender, EventArgs e)
         {
