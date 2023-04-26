@@ -20,6 +20,7 @@ namespace LibrarySystem
             if (LibraryDatabase.GetBook(123) != null)
             {
                 ResultBox2.Text = "Title: " + LibraryDatabase.GetBook(123).Title + "\r\nISBN: " + LibraryDatabase.GetBook(123).ISBN;
+                CoverImageBox.Image = LibraryDatabase.GetBook(123).CoverPhoto;
             }
         }
         // Add Book Menu Button Fuctionality
@@ -30,18 +31,21 @@ namespace LibrarySystem
         }
         private void SaveBookButton_Click(object sender, EventArgs e)
         {
-            if (!(uint.TryParse(ISBNEntryBox.Text, out uint _) ||
+            uint isbn;
+            if (!(uint.TryParse(ISBNEntryBox.Text, out isbn) ||
                 (double.TryParse(PriceEntryBox.Text, out double _))))
             { ChangeSearchVisibility(true); return; } // Invalid Entry Case
 
             if (double.TryParse(PriceEntryBox.Text, out double price))
-                LibraryDatabase.CreateBook(int.Parse(ISBNEntryBox.Text), 
-                    TitleEntryBox.Text, DescEntryBox.Text, AuthorEntryBox.Text, 
+                LibraryDatabase.CreateBook((int)isbn,
+                    TitleEntryBox.Text, DescEntryBox.Text, AuthorEntryBox.Text,
                     PublisherEntryBox.Text, GenreEntryBox.Text, 0, price);
-            else LibraryDatabase.CreateBook(int.Parse(ISBNEntryBox.Text),
+            else LibraryDatabase.CreateBook((int)isbn,
                     TitleEntryBox.Text, DescEntryBox.Text, AuthorEntryBox.Text,
                     PublisherEntryBox.Text, GenreEntryBox.Text, 0, 0);
+            if (CoverImageBox.Visible) LibraryDatabase.GetBook((int)isbn).CoverPhoto = CoverImageBox.Image;
 
+            CoverImageBox.Image = null;
             ChangeSearchVisibility(true);
         }
         // Shows/Hides Search Stuff (when true)
@@ -80,11 +84,12 @@ namespace LibrarySystem
             CoverImageBox.Visible = true;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                tempPhoto = CropImage(new Bitmap(openFileDialog1.FileName));
-                tempPhoto = ResizeImage(tempPhoto, 500, 500);
+                tempPhoto = new Bitmap(openFileDialog1.FileName);
+                tempPhoto = ResizeImage(tempPhoto, 300, 450);
                 CoverImageBox.Image = tempPhoto;
             }
         }
+        // Crops target image to square
         private static Image CropImage(Image img)
         {
             int width = img.Width;
@@ -104,7 +109,7 @@ namespace LibrarySystem
             return (Image)(bmpCrop);
         }
 
-        // https://stackoverflow.com/questions/1922040/how-to-resize-an-image-c-sharp
+        // Found at: https://stackoverflow.com/questions/1922040/how-to-resize-an-image-c-sharp
         private static Bitmap ResizeImage(Image image, int width, int height)
         {
             var destRect = new Rectangle(0, 0, width, height);

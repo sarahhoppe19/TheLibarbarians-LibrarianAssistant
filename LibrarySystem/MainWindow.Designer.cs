@@ -139,19 +139,19 @@
             // 
             // CoverImageBox
             // 
-            CoverImageBox.Location = new Point(1330, 43);
+            CoverImageBox.Location = new Point(1434, 84);
             CoverImageBox.Name = "CoverImageBox";
-            CoverImageBox.Size = new Size(500, 500);
+            CoverImageBox.Size = new Size(300, 450);
             CoverImageBox.TabIndex = 5;
             CoverImageBox.TabStop = false;
             // 
             // BookDescBox
             // 
             BookDescBox.Enabled = false;
-            BookDescBox.Location = new Point(1303, 549);
+            BookDescBox.Location = new Point(1304, 540);
             BookDescBox.Multiline = true;
             BookDescBox.Name = "BookDescBox";
-            BookDescBox.Size = new Size(546, 253);
+            BookDescBox.Size = new Size(546, 308);
             BookDescBox.TabIndex = 6;
             // 
             // ResultBox1

@@ -16,7 +16,7 @@ namespace LibrarySystem
         public string Genre { get; set; }
         public int Stock { get; set; }
         public double Price { get; set; }
-        Image? Cover { get; set; } // Cover will be null upon creation
+        public Image? CoverPhoto { get; set; } // Cover will be null upon creation
         
         // Default Constructor
         public Book()
