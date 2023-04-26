@@ -59,6 +59,7 @@
             DescEntryBox = new TextBox();
             AddPhotoButton = new Button();
             SearchButton = new Button();
+            openFileDialog1 = new OpenFileDialog();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)CoverImageBox).BeginInit();
             SuspendLayout();
@@ -329,6 +330,7 @@
             AddPhotoButton.Text = "Add Cover Photo";
             AddPhotoButton.UseVisualStyleBackColor = true;
             AddPhotoButton.Visible = false;
+            AddPhotoButton.Click += AddPhotoButton_Click;
             // 
             // SearchButton
             // 
@@ -339,6 +341,10 @@
             SearchButton.Text = "Search";
             SearchButton.UseVisualStyleBackColor = true;
             SearchButton.Click += SearchButton_Click;
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
             // 
             // MainWindow
             // 
@@ -416,5 +422,6 @@
         private TextBox DescEntryBox;
         private Button AddPhotoButton;
         private Button SearchButton;
+        private OpenFileDialog openFileDialog1;
     }
 }

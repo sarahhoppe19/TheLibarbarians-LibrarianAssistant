@@ -54,5 +54,9 @@ namespace LibrarySystem
             AddPhotoButton.Visible = !visible;
         }
 
+        private void AddPhotoButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

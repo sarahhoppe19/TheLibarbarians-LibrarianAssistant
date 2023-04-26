@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LibrarySystem
 {
-    internal class Inventory
+    public class Inventory
     {
         Dictionary<int, Book> BookDatabase = new Dictionary<int, Book>();
 
