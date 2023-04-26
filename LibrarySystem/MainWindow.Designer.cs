@@ -104,10 +104,10 @@
             // 
             // BookDescBox
             // 
-            BookDescBox.Location = new Point(1355, 549);
+            BookDescBox.Location = new Point(1303, 549);
             BookDescBox.Multiline = true;
             BookDescBox.Name = "BookDescBox";
-            BookDescBox.Size = new Size(450, 219);
+            BookDescBox.Size = new Size(546, 253);
             BookDescBox.TabIndex = 6;
             // 
             // ResultBox1
