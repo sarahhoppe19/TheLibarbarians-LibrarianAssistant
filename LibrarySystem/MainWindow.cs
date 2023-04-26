@@ -9,7 +9,7 @@ namespace LibrarySystem
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void SearchBox_TextChanged(object sender, EventArgs e)
         {
 
         }
