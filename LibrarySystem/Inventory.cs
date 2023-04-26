@@ -20,5 +20,6 @@ namespace LibrarySystem
                 isbn, name, description, author, publisher, genre, stock, price));
             return true;
         }
+        public Book GetBook(int isbn) {  return BookDatabase[isbn]; }
     }
 }
