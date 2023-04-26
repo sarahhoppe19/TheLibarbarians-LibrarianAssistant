@@ -36,6 +36,10 @@
             PageText = new TextBox();
             CoverImageBox = new PictureBox();
             BookDescBox = new TextBox();
+            ResultBox1 = new TextBox();
+            ResultBox2 = new TextBox();
+            ResultBox3 = new TextBox();
+            ResultBox4 = new TextBox();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)CoverImageBox).BeginInit();
             SuspendLayout();
@@ -53,7 +57,7 @@
             // 
             // NextButton
             // 
-            NextButton.Location = new Point(1046, 942);
+            NextButton.Location = new Point(1046, 888);
             NextButton.Name = "NextButton";
             NextButton.Size = new Size(131, 40);
             NextButton.TabIndex = 1;
@@ -76,7 +80,7 @@
             // 
             // PrevButton
             // 
-            PrevButton.Location = new Point(817, 942);
+            PrevButton.Location = new Point(817, 888);
             PrevButton.Name = "PrevButton";
             PrevButton.Size = new Size(131, 40);
             PrevButton.TabIndex = 3;
@@ -85,7 +89,7 @@
             // 
             // PageText
             // 
-            PageText.Location = new Point(954, 944);
+            PageText.Location = new Point(954, 890);
             PageText.Name = "PageText";
             PageText.Size = new Size(86, 35);
             PageText.TabIndex = 4;
@@ -103,14 +107,50 @@
             BookDescBox.Location = new Point(1355, 549);
             BookDescBox.Multiline = true;
             BookDescBox.Name = "BookDescBox";
-            BookDescBox.Size = new Size(450, 433);
+            BookDescBox.Size = new Size(450, 219);
             BookDescBox.TabIndex = 6;
+            // 
+            // ResultBox1
+            // 
+            ResultBox1.Location = new Point(104, 120);
+            ResultBox1.Multiline = true;
+            ResultBox1.Name = "ResultBox1";
+            ResultBox1.Size = new Size(936, 150);
+            ResultBox1.TabIndex = 7;
+            // 
+            // ResultBox2
+            // 
+            ResultBox2.Location = new Point(104, 298);
+            ResultBox2.Multiline = true;
+            ResultBox2.Name = "ResultBox2";
+            ResultBox2.Size = new Size(936, 150);
+            ResultBox2.TabIndex = 8;
+            // 
+            // ResultBox3
+            // 
+            ResultBox3.Location = new Point(104, 475);
+            ResultBox3.Multiline = true;
+            ResultBox3.Name = "ResultBox3";
+            ResultBox3.Size = new Size(936, 150);
+            ResultBox3.TabIndex = 9;
+            // 
+            // ResultBox4
+            // 
+            ResultBox4.Location = new Point(104, 652);
+            ResultBox4.Multiline = true;
+            ResultBox4.Name = "ResultBox4";
+            ResultBox4.Size = new Size(936, 150);
+            ResultBox4.TabIndex = 10;
             // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1896, 1016);
+            Controls.Add(ResultBox4);
+            Controls.Add(ResultBox3);
+            Controls.Add(ResultBox2);
+            Controls.Add(ResultBox1);
             Controls.Add(BookDescBox);
             Controls.Add(CoverImageBox);
             Controls.Add(PageText);
@@ -138,5 +178,9 @@
         private TextBox PageText;
         private PictureBox CoverImageBox;
         private TextBox BookDescBox;
+        private TextBox ResultBox1;
+        private TextBox ResultBox2;
+        private TextBox ResultBox3;
+        private TextBox ResultBox4;
     }
 }
