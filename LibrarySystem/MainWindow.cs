@@ -5,9 +5,11 @@ namespace LibrarySystem
 {
     public partial class MainWindow : Form
     {
+        // Main Window Members
         private Inventory LibraryDatabase = new();
         private Image? tempPhoto;
         int CurSelection;
+
         // Basically Main
         public MainWindow()
         {
