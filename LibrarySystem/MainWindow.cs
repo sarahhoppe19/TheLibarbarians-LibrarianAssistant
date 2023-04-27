@@ -53,6 +53,7 @@ namespace LibrarySystem
         // Shows/Hides Search Stuff (when true)
         private void ChangeSearchVisibility(bool visibility)
         {
+            // Search UI Elements
             ResultBox1.Visible = visibility;
             ResultBox2.Visible = visibility;
             ResultBox3.Visible = visibility;
@@ -66,6 +67,7 @@ namespace LibrarySystem
             SearchButton.Visible = visibility;
             Upbutton.Visible = visibility;
             DownButton.Visible = visibility;
+            // Book Creation UI Elements
             SaveBookButton.Visible = !visibility;
             TitleBox.Visible = !visibility;
             TitleEntryBox.Visible = !visibility;
@@ -114,6 +116,7 @@ namespace LibrarySystem
             return (Image)(bmpCrop);
         }
 
+        // Resizes image while maintaining good quality
         // Found at: https://stackoverflow.com/questions/1922040/how-to-resize-an-image-c-sharp
         private static Bitmap ResizeImage(Image image, int width, int height)
         {
