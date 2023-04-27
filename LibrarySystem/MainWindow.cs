@@ -116,6 +116,7 @@ namespace LibrarySystem
             return (Image)(bmpCrop);
         }
 
+        // Resizes image while maintaining good quality
         // Found at: https://stackoverflow.com/questions/1922040/how-to-resize-an-image-c-sharp
         private static Bitmap ResizeImage(Image image, int width, int height)
         {

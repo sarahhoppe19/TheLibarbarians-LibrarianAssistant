@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace LibrarySystem
 {
@@ -26,6 +27,16 @@ namespace LibrarySystem
         {
             if (!BookDatabase.ContainsKey(isbn)) return null;
             return BookDatabase[isbn]; 
+        }
+        // Returns a file location as a string from save file dialog
+        public string GetSaveFileLocation()
+        {
+            SaveFileDialog saveFileDialog2 = new ();
+            if (saveFileDialog2.ShowDialog() == DialogResult.OK)
+            {
+                return saveFileDialog2.FileName;
+            }
+            return String.Empty;
         }
     }
 }
