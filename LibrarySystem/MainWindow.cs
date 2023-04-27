@@ -64,6 +64,8 @@ namespace LibrarySystem
             NextButton.Visible = visibility;
             PageTextBox.Visible = visibility;
             SearchButton.Visible = visibility;
+            Upbutton.Visible = visibility;
+            DownButton.Visible = visibility;
             SaveBookButton.Visible = !visibility;
             TitleBox.Visible = !visibility;
             TitleEntryBox.Visible = !visibility;

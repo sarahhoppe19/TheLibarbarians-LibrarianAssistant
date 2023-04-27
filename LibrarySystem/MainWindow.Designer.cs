@@ -61,6 +61,8 @@
             AddPhotoButton = new Button();
             SearchButton = new Button();
             openFileDialog1 = new OpenFileDialog();
+            Upbutton = new Button();
+            DownButton = new Button();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)CoverImageBox).BeginInit();
             SuspendLayout();
@@ -353,11 +355,31 @@
             // 
             openFileDialog1.FileName = "openFileDialog1";
             // 
+            // Upbutton
+            // 
+            Upbutton.Location = new Point(1087, 408);
+            Upbutton.Name = "Upbutton";
+            Upbutton.Size = new Size(40, 40);
+            Upbutton.TabIndex = 28;
+            Upbutton.Text = "/\\";
+            Upbutton.UseVisualStyleBackColor = true;
+            // 
+            // DownButton
+            // 
+            DownButton.Location = new Point(1087, 475);
+            DownButton.Name = "DownButton";
+            DownButton.Size = new Size(40, 40);
+            DownButton.TabIndex = 29;
+            DownButton.Text = "\\/";
+            DownButton.UseVisualStyleBackColor = true;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1896, 1016);
+            Controls.Add(DownButton);
+            Controls.Add(Upbutton);
             Controls.Add(SearchButton);
             Controls.Add(AddPhotoButton);
             Controls.Add(DescEntryBox);
@@ -431,5 +453,7 @@
         private Button SearchButton;
         private OpenFileDialog openFileDialog1;
         private ToolStripMenuItem editBookToolStripMenuItem;
+        private Button Upbutton;
+        private Button DownButton;
     }
 }
