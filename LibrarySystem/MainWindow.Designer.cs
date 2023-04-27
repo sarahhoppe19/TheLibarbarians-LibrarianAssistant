@@ -63,6 +63,7 @@
             openFileDialog1 = new OpenFileDialog();
             Upbutton = new Button();
             DownButton = new Button();
+            saveFileDialog1 = new SaveFileDialog();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)CoverImageBox).BeginInit();
             SuspendLayout();
@@ -455,5 +456,6 @@
         private ToolStripMenuItem editBookToolStripMenuItem;
         private Button Upbutton;
         private Button DownButton;
+        private SaveFileDialog saveFileDialog1;
     }
 }
