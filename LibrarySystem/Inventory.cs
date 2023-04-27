@@ -28,7 +28,7 @@ namespace LibrarySystem
             if (!BookDatabase.ContainsKey(isbn)) return null;
             return BookDatabase[isbn]; 
         }
-        // Returns a file location as a string from save file dialog
+        // Returns a file location as a string from save file dialog - Empty string is not found
         public string GetSaveFileLocation()
         {
             SaveFileDialog saveFileDialog2 = new ();
