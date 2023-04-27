@@ -9,6 +9,7 @@ namespace LibrarySystem
     public class Inventory
     {
         Dictionary<int, Book> BookDatabase = new Dictionary<int, Book>();
+        Dictionary<int, User> UserDatabase = new Dictionary<int, User>();
 
         // Creates a book from input - returns true if successful
         public bool CreateBook(int isbn, string title, string description, string author,
