@@ -57,7 +57,7 @@ namespace LibrarySystem
         }
 
         //Search for Book(s) via the ISBN
-        public List<int> BookIsbnSearch(int isbn)
+        public List<int> BookSearch(int isbn)
         {
             List<int> foundBookIsbn = new();    //stores all the search results into a list of ints for the isbn numbers
             string isId = isbn.ToString();     //the "is" before the Id stands for ISBN Search just we have different labels for everything
@@ -70,28 +70,24 @@ namespace LibrarySystem
                 {
                     foundBookIsbn.Add(b.Id);
                 }
-                foundBookIsbn.Sort();   //Sorts the results for easy ID access
-                return foundBookIsbn;
             }
+            foundBookIsbn.Sort();   //Sorts the results for easy ID access
+            return foundBookIsbn;
         }
 
-        //Search for Book(s) via the title
-        public List<int> BookTitleSearch(string title)
+        //Search for Book(s) via keyword
+        public List<int> BookSearch(string keyPhrase)
         {
-            List<string> foundBookTitle = new();    //stores the search results via titles into a list of strings
-            string tsId = title.ToString();         //not sure if needed as our list will contain strings, so there's no need to convert string to string
-            string tempId;
+            List<int> foundBookTitle = new();    //stores the search results via titles into a list of strings
 
             foreach (Book b in BookDatabase.Values)
             {
-                tempId = b.Id.ToString();
-                if (tempId.Contains(tsId) || tempId.Contains(b.Description) || tempId.Contains(b.Author) || tempId.Contains(b.Genre) || tempId.Contains(b.Publisher) || tempId.Contains(b.ISBN))
+                if (b.Title.Contains(keyPhrase) || b.Publisher.Contains(keyPhrase) || b.Author.Contains(keyPhrase) || b.Description.Contains(keyPhrase) || b.Genre.Contains(keyPhrase))
                 {
-                    foundBookTitle.Add(b.Id);
+                    foundBookTitle.Add(b.ISBN);
                 }
-                foundBookTitle.Sort();      //Sorts the results for easy ID access
-                return foundBookTitle;
             }
+            return foundBookTitle;
         }
     }
 }
