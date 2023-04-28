@@ -18,12 +18,7 @@ namespace LibrarySystem
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            ResultBox1.Text = SearchBox.Text;
-            if (LibraryDatabase.GetBook(123) != null)
-            {
-                ResultBox2.Text = "Title: " + LibraryDatabase.GetBook(123).Title + "\r\nISBN: " + LibraryDatabase.GetBook(123).ISBN;
-                CoverImageBox.Image = LibraryDatabase.GetBook(123).CoverPhoto;
-            }
+            string searchPhrase = SearchBox.Text;
         }
         // Add Book Menu Button Fuctionality
         private void addBookToolStripMenuItem_Click(object sender, EventArgs e)
