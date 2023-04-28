@@ -8,7 +8,7 @@ namespace LibrarySystem
 {
     public class User
     {
-        public int ID {  get; set; }
+        public int uID {  get; set; }
         public string  username { get; set; }
         public string password { get; set; }
         //graces user search uses user id as an int
