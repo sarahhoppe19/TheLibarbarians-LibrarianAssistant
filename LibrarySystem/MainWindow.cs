@@ -9,18 +9,16 @@ namespace LibrarySystem
         private Inventory LibraryDatabase = new();
         private Image? tempPhoto;
         int CurSelection;
-
-        // Basically Main
         public MainWindow()
         {
             InitializeComponent();
         }
-
+        // Search button
         private void SearchButton_Click(object sender, EventArgs e)
         {
             string searchPhrase = SearchBox.Text;
         }
-        // Add Book Menu Button Fuctionality
+        // Add-Book Menu Button Fuctionality
         private void addBookToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Hide all boxes
