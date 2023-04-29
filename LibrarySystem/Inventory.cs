@@ -48,9 +48,9 @@ namespace LibrarySystem
             string tempId;
             foreach (User u in UserDatabase.Values)
             {
-                tempId = u.uID.ToString();
+                tempId = u.ID.ToString();
                 if (tempId.Contains(sId))
-                    foundUsers.Add(u.uID);
+                    foundUsers.Add(u.ID);
             }
             foundUsers.Sort(); // Sort for easy ID access
             return foundUsers;
