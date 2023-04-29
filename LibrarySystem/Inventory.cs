@@ -43,8 +43,8 @@ namespace LibrarySystem
         //Search for User
         public List<int> UserSearch(int id)
         {
-            List<int> foundUsers = new();  //store search results in a list of ints
-            string sId = id.ToString(); //convert target ID to string
+            List<int> foundUsers = new();  // Store search results in a list of ints
+            string sId = id.ToString(); // Convert target ID to string
             string tempId;
             foreach (User u in UserDatabase.Values)
             {
@@ -56,12 +56,11 @@ namespace LibrarySystem
             return foundUsers;
         }
 
-        //Search for Book(s) via the ISBN
+        // Search for Book(s) via the ISBN
         public List<int> BookSearch(int isbn)
         {
-            List<int> foundBookIsbn = new();    //stores all the search results into a list of ints for the isbn numbers
-            string isbnString = isbn.ToString();     //the "is" before the Id stands for ISBN Search just we have different labels for everything
-                                             //this line ^ also converts the target ID to a string
+            List<int> foundBookIsbn = new();    // Stores all the search results into a list of ints for the isbn numbers
+            string isbnString = isbn.ToString();     // Converts the target ID to a string
             foreach (Book b in BookDatabase.Values)
             {
                 if (b.ISBN.ToString().Contains(isbnString))
@@ -69,14 +68,14 @@ namespace LibrarySystem
                     foundBookIsbn.Add(b.ISBN);
                 }
             }
-            foundBookIsbn.Sort();   //Sorts the results for easy ID access
+            foundBookIsbn.Sort();   // Sorts the results for easy ID access
             return foundBookIsbn;
         }
 
-        //Search for Book(s) via keyword
+        // Search for Book(s) via keyword
         public List<int> BookSearch(string keyPhrase)
         {
-            List<int> foundBookTitle = new();    //stores the search results via titles into a list of strings
+            List<int> foundBookTitle = new();    // Stores the search results via titles into a list of strings
 
             foreach (Book b in BookDatabase.Values)
             {
