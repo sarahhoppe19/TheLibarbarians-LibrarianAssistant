@@ -35,11 +35,12 @@ namespace LibrarySystem
             }
             // Set search selection to default
             CurSelection = 1;
+            CurPage = 1;
             ResultBox1.BackColor = Color.White;
             ResultBox2.BackColor = SystemColors.Window;
             ResultBox3.BackColor = SystemColors.Window;
             ResultBox4.BackColor = SystemColors.Window;
-            PageTextBox.Text = "1/" + ((int)(BookSearchResults.Count / 4) + 1).ToString();
+            PageTextBox.Text = "1/" + ((int)((BookSearchResults.Count+(4-BookSearchResults.Count%4)) / 4)).ToString();
             string result;
             Book curBook;
             // Loop through up to 4 search results and displays them
@@ -193,7 +194,24 @@ namespace LibrarySystem
 
         private void Upbutton_Click(object sender, EventArgs e)
         {
-
+            if (CurSelection < 2) return;
+            CurSelection -= 1;
+            switch(CurSelection)
+            {
+                case 1:
+                    ResultBox1.BackColor = Color.White;
+                    ResultBox2.BackColor = SystemColors.Window;
+                    break;
+                case 2: 
+                    ResultBox2.BackColor = Color.White;
+                    ResultBox3.BackColor = SystemColors.Window;
+                    break;
+                case 3:
+                    ResultBox3.BackColor = Color.White;
+                    ResultBox4.BackColor = SystemColors.Window;
+                    break;
+            }
+            SetResultBox(CurSelection, LibraryDatabase.GetBook(CurSelection + (CurPage-1)*4));
         }
     }
 }
