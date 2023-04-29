@@ -10,6 +10,7 @@ namespace LibrarySystem
         private Image? tempPhoto;
         private List<int>? BookSearchResults; // Stores search results (can be null)
         int CurSelection; // Tracks current search result selection
+        int CurPage; // Tracks current page
         public MainWindow()
         {
             InitializeComponent();
@@ -24,7 +25,7 @@ namespace LibrarySystem
         }
         private void DisplaySearchResults()
         {
-            if (BookSearchResults == null)
+            if (BookSearchResults == null || BookSearchResults.Count == 0)
             {
                 ResultBox1.Text = string.Empty;
                 ResultBox2.Text = string.Empty;
@@ -38,12 +39,22 @@ namespace LibrarySystem
             ResultBox2.BackColor = SystemColors.Window;
             ResultBox3.BackColor = SystemColors.Window;
             ResultBox4.BackColor = SystemColors.Window;
-            PageTextBox.Text = "1/" + ((int)(BookSearchResults.Count/4)).ToString();
+            PageTextBox.Text = "1/" + ((int)(BookSearchResults.Count/4)+1).ToString();
             string result;
+            Book curBook;
             for (int i = 0; i < BookSearchResults.Count && i < 4; i++)
             {
-                SetResultBox(i + 1,LibraryDatabase.GetBook(BookSearchResults[i]).Title);
+                curBook = LibraryDatabase.GetBook(BookSearchResults[i]);
+                result = "ISBN: " + curBook.ISBN.ToString()+"\r\nTitle: " + curBook.Title + "\r\nAuthor: " + curBook.Author +
+                    "\tPublisher: " + curBook.Publisher + "\r\nGenre(s): " + curBook.Genre + "\r\nStock: " + curBook.Stock.ToString() + "\tPrice: " + curBook.Price.ToString();
+                SetResultBox(i + 1, result);
             }
+            DisplayCurrentBook(LibraryDatabase.GetBook(BookSearchResults[0]));
+        }
+        private void DisplayCurrentBook(Book curBook)
+        {
+            CoverImageBox.Image = curBook.CoverPhoto;
+            BookDescBox.Text = curBook.Description;
         }
         // Sets target result box with text
         private void SetResultBox(int resultBox, string text)
