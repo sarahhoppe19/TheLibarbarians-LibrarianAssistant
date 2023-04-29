@@ -8,8 +8,6 @@ namespace LibrarySystem
 {
     public class User
     {
-        //graces user search uses user id as an int
-        //also called userID 'uID'
         public int ID {  get; set; }
         public string  Name { get; set; }
         public string Email { get; set; }
@@ -17,7 +15,9 @@ namespace LibrarySystem
         List<int> CheckedOutBooks = new();
         
 
-        // Default constructor
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public User()
         {
             ID = 0; // this is not valid
@@ -25,7 +25,13 @@ namespace LibrarySystem
             Email = string.Empty;
             Password = string.Empty;
         }
-        //overloaded constructor
+        /// <summary>
+        /// Overloaded constructor
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
         public User(int id,  string name, string email, string password)
         {
             ID = id;
