@@ -25,22 +25,23 @@ namespace LibrarySystem
         }
         private void DisplaySearchResults()
         {
+            // Reset all Text Boxes
+            ResultBox1.Text = string.Empty;
+            ResultBox2.Text = string.Empty;
+            ResultBox3.Text = string.Empty;
+            ResultBox4.Text = string.Empty;
             if (BookSearchResults == null || BookSearchResults.Count == 0)
             {
-                ResultBox1.Text = string.Empty;
-                ResultBox2.Text = string.Empty;
-                ResultBox3.Text = string.Empty;
-                ResultBox4.Text = string.Empty;
                 return;
             }
             // Set search selection to default
             CurSelection = 1;
             CurPage = 1;
             ResultBox1.BackColor = Color.White;
-            ResultBox2.BackColor = SystemColors.Window;
-            ResultBox3.BackColor = SystemColors.Window;
-            ResultBox4.BackColor = SystemColors.Window;
-            PageTextBox.Text = "1/" + ((int)((BookSearchResults.Count+(4-BookSearchResults.Count%4)) / 4)).ToString();
+            ResultBox2.BackColor = Color.LightGray;
+            ResultBox3.BackColor = Color.LightGray;
+            ResultBox4.BackColor = Color.LightGray;
+            PageTextBox.Text = "1/" + ((int)((BookSearchResults.Count + (4 - BookSearchResults.Count % 4)) / 4)).ToString();
             string result;
             Book curBook;
             // Loop through up to 4 search results and displays them
@@ -59,6 +60,7 @@ namespace LibrarySystem
         // Sets target result box with book info
         private void SetResultBox(int resultBox, Book curBook)
         {
+            if (curBook == null) { CoverImageBox.Image = null; DescriptionBox.Text = String.Empty; return; }
             string text = "ISBN: " + curBook.ISBN.ToString() + "\r\nTitle: " + curBook.Title + "\r\nAuthor: " + curBook.Author +
                     "\tPublisher: " + curBook.Publisher + "\r\nGenre(s): " + curBook.Genre + "\r\nStock: " + curBook.Stock.ToString() + "\tPrice: " + curBook.Price.ToString();
             switch (resultBox)
@@ -94,8 +96,15 @@ namespace LibrarySystem
                     TitleEntryBox.Text, DescEntryBox.Text, AuthorEntryBox.Text,
                     PublisherEntryBox.Text, GenreEntryBox.Text, 0, 0);
             if (CoverImageBox.Visible) LibraryDatabase.GetBook((int)isbn).CoverPhoto = CoverImageBox.Image;
-
+            // Reset Page
             CoverImageBox.Image = null;
+            TitleEntryBox.Text = String.Empty;
+            ISBNEntryBox.Text = String.Empty;
+            AuthorEntryBox.Text = String.Empty;
+            PublisherEntryBox.Text = String.Empty;
+            GenreEntryBox.Text = String.Empty;
+            PriceEntryBox.Text = String.Empty;
+            DescEntryBox.Text = String.Empty;
             ChangeSearchVisibility(true);
         }
         /// <summary>
@@ -196,22 +205,66 @@ namespace LibrarySystem
         {
             if (CurSelection < 2) return;
             CurSelection -= 1;
-            switch(CurSelection)
+            switch (CurSelection)
             {
                 case 1:
                     ResultBox1.BackColor = Color.White;
-                    ResultBox2.BackColor = SystemColors.Window;
+                    ResultBox2.BackColor = Color.LightGray;
                     break;
-                case 2: 
+                case 2:
                     ResultBox2.BackColor = Color.White;
-                    ResultBox3.BackColor = SystemColors.Window;
+                    ResultBox3.BackColor = Color.LightGray;
                     break;
                 case 3:
                     ResultBox3.BackColor = Color.White;
-                    ResultBox4.BackColor = SystemColors.Window;
+                    ResultBox4.BackColor = Color.LightGray;
                     break;
             }
-            SetResultBox(CurSelection, LibraryDatabase.GetBook(CurSelection + (CurPage-1)*4));
+            Book temp;
+            if (CurSelection-1 + (CurPage - 1) * 4 < BookSearchResults.Count)
+            {
+                temp = LibraryDatabase.GetBook(BookSearchResults[CurSelection-1 + (CurPage - 1) * 4]);
+                CoverImageBox.Image = temp.CoverPhoto;
+                BookDescBox.Text = temp.Description;
+            }
+            else
+            {
+                CoverImageBox.Image = null;
+                BookDescBox.Text = String.Empty;
+            }
+        }
+
+        private void DownButton_Click(object sender, EventArgs e)
+        {
+            if (CurSelection > 3) return;
+            CurSelection += 1;
+            switch (CurSelection)
+            {
+                case 2:
+                    ResultBox2.BackColor = Color.White;
+                    ResultBox1.BackColor = Color.LightGray;
+                    break;
+                case 3:
+                    ResultBox3.BackColor = Color.White;
+                    ResultBox2.BackColor = Color.LightGray;
+                    break;
+                case 4:
+                    ResultBox4.BackColor = Color.White;
+                    ResultBox3.BackColor = Color.LightGray;
+                    break;
+            }
+            Book temp;
+            if (CurSelection-1 + (CurPage - 1) * 4 < BookSearchResults.Count)
+            {
+                temp = LibraryDatabase.GetBook(BookSearchResults[CurSelection-1 + (CurPage - 1) * 4]);
+                CoverImageBox.Image = temp.CoverPhoto;
+                BookDescBox.Text = temp.Description;
+            }
+            else
+            {
+                CoverImageBox.Image = null;
+                BookDescBox.Text = String.Empty;
+            }
         }
     }
 }

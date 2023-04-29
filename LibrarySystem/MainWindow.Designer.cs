@@ -374,6 +374,7 @@
             DownButton.TabIndex = 29;
             DownButton.Text = "\\/";
             DownButton.UseVisualStyleBackColor = true;
+            DownButton.Click += DownButton_Click;
             // 
             // MainWindow
             // 
