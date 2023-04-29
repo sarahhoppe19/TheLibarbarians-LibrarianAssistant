@@ -39,13 +39,13 @@ namespace LibrarySystem
             ResultBox2.BackColor = SystemColors.Window;
             ResultBox3.BackColor = SystemColors.Window;
             ResultBox4.BackColor = SystemColors.Window;
-            PageTextBox.Text = "1/" + ((int)(BookSearchResults.Count/4)+1).ToString();
+            PageTextBox.Text = "1/" + ((int)(BookSearchResults.Count / 4) + 1).ToString();
             string result;
             Book curBook;
             for (int i = 0; i < BookSearchResults.Count && i < 4; i++)
             {
                 curBook = LibraryDatabase.GetBook(BookSearchResults[i]);
-                result = "ISBN: " + curBook.ISBN.ToString()+"\r\nTitle: " + curBook.Title + "\r\nAuthor: " + curBook.Author +
+                result = "ISBN: " + curBook.ISBN.ToString() + "\r\nTitle: " + curBook.Title + "\r\nAuthor: " + curBook.Author +
                     "\tPublisher: " + curBook.Publisher + "\r\nGenre(s): " + curBook.Genre + "\r\nStock: " + curBook.Stock.ToString() + "\tPrice: " + curBook.Price.ToString();
                 SetResultBox(i + 1, result);
             }
@@ -59,7 +59,7 @@ namespace LibrarySystem
         // Sets target result box with text
         private void SetResultBox(int resultBox, string text)
         {
-            switch(resultBox) 
+            switch (resultBox)
             {
                 case 1:
                     ResultBox1.Text = text; break;
@@ -188,6 +188,11 @@ namespace LibrarySystem
             }
 
             return destImage;
+        }
+
+        private void Upbutton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

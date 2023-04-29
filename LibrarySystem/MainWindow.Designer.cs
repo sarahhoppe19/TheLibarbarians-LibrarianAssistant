@@ -74,140 +74,130 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { loginToolStripMenuItem, inventoryToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1264, 28);
+            menuStrip1.Padding = new Padding(9, 3, 0, 3);
+            menuStrip1.Size = new Size(1896, 40);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
             // loginToolStripMenuItem
             // 
             loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            loginToolStripMenuItem.Size = new Size(69, 24);
+            loginToolStripMenuItem.Size = new Size(97, 34);
             loginToolStripMenuItem.Text = "Login...";
             // 
             // inventoryToolStripMenuItem
             // 
             inventoryToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { addBookToolStripMenuItem, editBookToolStripMenuItem });
             inventoryToolStripMenuItem.Name = "inventoryToolStripMenuItem";
-            inventoryToolStripMenuItem.Size = new Size(84, 24);
+            inventoryToolStripMenuItem.Size = new Size(118, 34);
             inventoryToolStripMenuItem.Text = "Inventory";
             // 
             // addBookToolStripMenuItem
             // 
             addBookToolStripMenuItem.Name = "addBookToolStripMenuItem";
-            addBookToolStripMenuItem.Size = new Size(158, 26);
+            addBookToolStripMenuItem.Size = new Size(221, 40);
             addBookToolStripMenuItem.Text = "Add Book";
             addBookToolStripMenuItem.Click += addBookToolStripMenuItem_Click;
             // 
             // editBookToolStripMenuItem
             // 
             editBookToolStripMenuItem.Name = "editBookToolStripMenuItem";
-            editBookToolStripMenuItem.Size = new Size(158, 26);
+            editBookToolStripMenuItem.Size = new Size(221, 40);
             editBookToolStripMenuItem.Text = "Edit Book";
             // 
             // NextButton
             // 
-            NextButton.Location = new Point(697, 592);
-            NextButton.Margin = new Padding(2, 2, 2, 2);
+            NextButton.Location = new Point(1046, 888);
             NextButton.Name = "NextButton";
-            NextButton.Size = new Size(87, 27);
+            NextButton.Size = new Size(130, 40);
             NextButton.TabIndex = 1;
             NextButton.Text = "Next>>";
             NextButton.UseVisualStyleBackColor = true;
             // 
             // SearchBox
             // 
-            SearchBox.Location = new Point(481, 29);
-            SearchBox.Margin = new Padding(2, 2, 2, 2);
+            SearchBox.Location = new Point(722, 44);
             SearchBox.Name = "SearchBox";
-            SearchBox.Size = new Size(351, 27);
+            SearchBox.Size = new Size(524, 35);
             SearchBox.TabIndex = 2;
             // 
             // PrevButton
             // 
-            PrevButton.Location = new Point(545, 592);
-            PrevButton.Margin = new Padding(2, 2, 2, 2);
+            PrevButton.Location = new Point(818, 888);
             PrevButton.Name = "PrevButton";
-            PrevButton.Size = new Size(87, 27);
+            PrevButton.Size = new Size(130, 40);
             PrevButton.TabIndex = 3;
             PrevButton.Text = "<<Prev";
             PrevButton.UseVisualStyleBackColor = true;
             // 
             // PageTextBox
             // 
-            PageTextBox.Location = new Point(636, 593);
-            PageTextBox.Margin = new Padding(2, 2, 2, 2);
+            PageTextBox.Location = new Point(954, 890);
             PageTextBox.MaxLength = 10;
             PageTextBox.Name = "PageTextBox";
-            PageTextBox.Size = new Size(59, 27);
+            PageTextBox.Size = new Size(86, 35);
             PageTextBox.TabIndex = 4;
             PageTextBox.Text = "1/1";
             PageTextBox.TextAlign = HorizontalAlignment.Center;
             // 
             // CoverImageBox
             // 
-            CoverImageBox.Location = new Point(956, 56);
-            CoverImageBox.Margin = new Padding(2, 2, 2, 2);
+            CoverImageBox.Location = new Point(1434, 84);
             CoverImageBox.Name = "CoverImageBox";
-            CoverImageBox.Size = new Size(200, 300);
+            CoverImageBox.Size = new Size(300, 450);
             CoverImageBox.TabIndex = 5;
             CoverImageBox.TabStop = false;
             // 
             // BookDescBox
             // 
             BookDescBox.Enabled = false;
-            BookDescBox.Location = new Point(869, 360);
-            BookDescBox.Margin = new Padding(2, 2, 2, 2);
+            BookDescBox.Location = new Point(1304, 540);
             BookDescBox.Multiline = true;
             BookDescBox.Name = "BookDescBox";
-            BookDescBox.Size = new Size(365, 207);
+            BookDescBox.Size = new Size(546, 308);
             BookDescBox.TabIndex = 6;
             // 
             // ResultBox1
             // 
             ResultBox1.Enabled = false;
-            ResultBox1.Location = new Point(69, 80);
-            ResultBox1.Margin = new Padding(2, 2, 2, 2);
+            ResultBox1.Location = new Point(104, 120);
             ResultBox1.Multiline = true;
             ResultBox1.Name = "ResultBox1";
-            ResultBox1.Size = new Size(625, 101);
+            ResultBox1.Size = new Size(936, 150);
             ResultBox1.TabIndex = 7;
             // 
             // ResultBox2
             // 
             ResultBox2.Enabled = false;
-            ResultBox2.Location = new Point(69, 199);
-            ResultBox2.Margin = new Padding(2, 2, 2, 2);
+            ResultBox2.Location = new Point(104, 298);
             ResultBox2.Multiline = true;
             ResultBox2.Name = "ResultBox2";
-            ResultBox2.Size = new Size(625, 101);
+            ResultBox2.Size = new Size(936, 150);
             ResultBox2.TabIndex = 8;
             // 
             // ResultBox3
             // 
             ResultBox3.Enabled = false;
-            ResultBox3.Location = new Point(69, 317);
-            ResultBox3.Margin = new Padding(2, 2, 2, 2);
+            ResultBox3.Location = new Point(104, 476);
             ResultBox3.Multiline = true;
             ResultBox3.Name = "ResultBox3";
-            ResultBox3.Size = new Size(625, 101);
+            ResultBox3.Size = new Size(936, 150);
             ResultBox3.TabIndex = 9;
             // 
             // ResultBox4
             // 
             ResultBox4.Enabled = false;
-            ResultBox4.Location = new Point(69, 435);
-            ResultBox4.Margin = new Padding(2, 2, 2, 2);
+            ResultBox4.Location = new Point(104, 652);
             ResultBox4.Multiline = true;
             ResultBox4.Name = "ResultBox4";
-            ResultBox4.Size = new Size(625, 101);
+            ResultBox4.Size = new Size(936, 150);
             ResultBox4.TabIndex = 10;
             // 
             // SaveBookButton
             // 
-            SaveBookButton.Location = new Point(625, 561);
-            SaveBookButton.Margin = new Padding(2, 2, 2, 2);
+            SaveBookButton.Location = new Point(938, 842);
             SaveBookButton.Name = "SaveBookButton";
-            SaveBookButton.Size = new Size(87, 27);
+            SaveBookButton.Size = new Size(130, 40);
             SaveBookButton.TabIndex = 11;
             SaveBookButton.Text = "Save Book";
             SaveBookButton.UseVisualStyleBackColor = true;
@@ -217,150 +207,135 @@
             // TitleBox
             // 
             TitleBox.Enabled = false;
-            TitleBox.Location = new Point(69, 80);
-            TitleBox.Margin = new Padding(2, 2, 2, 2);
+            TitleBox.Location = new Point(104, 120);
             TitleBox.Name = "TitleBox";
-            TitleBox.Size = new Size(118, 27);
+            TitleBox.Size = new Size(175, 35);
             TitleBox.TabIndex = 12;
             TitleBox.Text = "Title";
             TitleBox.Visible = false;
             // 
             // TitleEntryBox
             // 
-            TitleEntryBox.Location = new Point(69, 107);
-            TitleEntryBox.Margin = new Padding(2, 2, 2, 2);
+            TitleEntryBox.Location = new Point(104, 160);
             TitleEntryBox.Name = "TitleEntryBox";
-            TitleEntryBox.Size = new Size(406, 27);
+            TitleEntryBox.Size = new Size(607, 35);
             TitleEntryBox.TabIndex = 13;
             TitleEntryBox.Visible = false;
             // 
             // ISBNBox
             // 
             ISBNBox.Enabled = false;
-            ISBNBox.Location = new Point(69, 135);
-            ISBNBox.Margin = new Padding(2, 2, 2, 2);
+            ISBNBox.Location = new Point(104, 202);
             ISBNBox.Name = "ISBNBox";
-            ISBNBox.Size = new Size(118, 27);
+            ISBNBox.Size = new Size(175, 35);
             ISBNBox.TabIndex = 14;
             ISBNBox.Text = "ISBN";
             ISBNBox.Visible = false;
             // 
             // ISBNEntryBox
             // 
-            ISBNEntryBox.Location = new Point(69, 162);
-            ISBNEntryBox.Margin = new Padding(2, 2, 2, 2);
+            ISBNEntryBox.Location = new Point(104, 243);
             ISBNEntryBox.Name = "ISBNEntryBox";
-            ISBNEntryBox.Size = new Size(406, 27);
+            ISBNEntryBox.Size = new Size(607, 35);
             ISBNEntryBox.TabIndex = 15;
             ISBNEntryBox.Visible = false;
             // 
             // AuthorBox
             // 
             AuthorBox.Enabled = false;
-            AuthorBox.Location = new Point(69, 189);
-            AuthorBox.Margin = new Padding(2, 2, 2, 2);
+            AuthorBox.Location = new Point(104, 284);
             AuthorBox.Name = "AuthorBox";
-            AuthorBox.Size = new Size(118, 27);
+            AuthorBox.Size = new Size(175, 35);
             AuthorBox.TabIndex = 16;
             AuthorBox.Text = "Author";
             AuthorBox.Visible = false;
             // 
             // AuthorEntryBox
             // 
-            AuthorEntryBox.Location = new Point(69, 217);
-            AuthorEntryBox.Margin = new Padding(2, 2, 2, 2);
+            AuthorEntryBox.Location = new Point(104, 326);
             AuthorEntryBox.Name = "AuthorEntryBox";
-            AuthorEntryBox.Size = new Size(406, 27);
+            AuthorEntryBox.Size = new Size(607, 35);
             AuthorEntryBox.TabIndex = 17;
             AuthorEntryBox.Visible = false;
             // 
             // PublisherBox
             // 
             PublisherBox.Enabled = false;
-            PublisherBox.Location = new Point(69, 244);
-            PublisherBox.Margin = new Padding(2, 2, 2, 2);
+            PublisherBox.Location = new Point(104, 366);
             PublisherBox.Name = "PublisherBox";
-            PublisherBox.Size = new Size(118, 27);
+            PublisherBox.Size = new Size(175, 35);
             PublisherBox.TabIndex = 18;
             PublisherBox.Text = "Publisher";
             PublisherBox.Visible = false;
             // 
             // PublisherEntryBox
             // 
-            PublisherEntryBox.Location = new Point(69, 271);
-            PublisherEntryBox.Margin = new Padding(2, 2, 2, 2);
+            PublisherEntryBox.Location = new Point(104, 406);
             PublisherEntryBox.Name = "PublisherEntryBox";
-            PublisherEntryBox.Size = new Size(406, 27);
+            PublisherEntryBox.Size = new Size(607, 35);
             PublisherEntryBox.TabIndex = 19;
             PublisherEntryBox.Visible = false;
             // 
             // GenreBox
             // 
             GenreBox.Enabled = false;
-            GenreBox.Location = new Point(69, 299);
-            GenreBox.Margin = new Padding(2, 2, 2, 2);
+            GenreBox.Location = new Point(104, 448);
             GenreBox.Name = "GenreBox";
-            GenreBox.Size = new Size(118, 27);
+            GenreBox.Size = new Size(175, 35);
             GenreBox.TabIndex = 20;
             GenreBox.Text = "Genre(s)";
             GenreBox.Visible = false;
             // 
             // GenreEntryBox
             // 
-            GenreEntryBox.Location = new Point(69, 326);
-            GenreEntryBox.Margin = new Padding(2, 2, 2, 2);
+            GenreEntryBox.Location = new Point(104, 489);
             GenreEntryBox.Name = "GenreEntryBox";
-            GenreEntryBox.Size = new Size(406, 27);
+            GenreEntryBox.Size = new Size(607, 35);
             GenreEntryBox.TabIndex = 21;
             GenreEntryBox.Visible = false;
             // 
             // PriceBox
             // 
             PriceBox.Enabled = false;
-            PriceBox.Location = new Point(69, 353);
-            PriceBox.Margin = new Padding(2, 2, 2, 2);
+            PriceBox.Location = new Point(104, 530);
             PriceBox.Name = "PriceBox";
-            PriceBox.Size = new Size(118, 27);
+            PriceBox.Size = new Size(175, 35);
             PriceBox.TabIndex = 22;
             PriceBox.Text = "Price";
             PriceBox.Visible = false;
             // 
             // PriceEntryBox
             // 
-            PriceEntryBox.Location = new Point(69, 381);
-            PriceEntryBox.Margin = new Padding(2, 2, 2, 2);
+            PriceEntryBox.Location = new Point(104, 572);
             PriceEntryBox.Name = "PriceEntryBox";
-            PriceEntryBox.Size = new Size(406, 27);
+            PriceEntryBox.Size = new Size(607, 35);
             PriceEntryBox.TabIndex = 23;
             PriceEntryBox.Visible = false;
             // 
             // DescriptionBox
             // 
             DescriptionBox.Enabled = false;
-            DescriptionBox.Location = new Point(69, 408);
-            DescriptionBox.Margin = new Padding(2, 2, 2, 2);
+            DescriptionBox.Location = new Point(104, 612);
             DescriptionBox.Name = "DescriptionBox";
-            DescriptionBox.Size = new Size(118, 27);
+            DescriptionBox.Size = new Size(175, 35);
             DescriptionBox.TabIndex = 24;
             DescriptionBox.Text = "Description";
             DescriptionBox.Visible = false;
             // 
             // DescEntryBox
             // 
-            DescEntryBox.Location = new Point(69, 435);
-            DescEntryBox.Margin = new Padding(2, 2, 2, 2);
+            DescEntryBox.Location = new Point(104, 652);
             DescEntryBox.Multiline = true;
             DescEntryBox.Name = "DescEntryBox";
-            DescEntryBox.Size = new Size(406, 101);
+            DescEntryBox.Size = new Size(607, 150);
             DescEntryBox.TabIndex = 25;
             DescEntryBox.Visible = false;
             // 
             // AddPhotoButton
             // 
-            AddPhotoButton.Location = new Point(69, 539);
-            AddPhotoButton.Margin = new Padding(2, 2, 2, 2);
+            AddPhotoButton.Location = new Point(104, 808);
             AddPhotoButton.Name = "AddPhotoButton";
-            AddPhotoButton.Size = new Size(165, 27);
+            AddPhotoButton.Size = new Size(248, 40);
             AddPhotoButton.TabIndex = 26;
             AddPhotoButton.Text = "Add Cover Photo";
             AddPhotoButton.UseVisualStyleBackColor = true;
@@ -369,10 +344,9 @@
             // 
             // SearchButton
             // 
-            SearchButton.Location = new Point(405, 27);
-            SearchButton.Margin = new Padding(2, 2, 2, 2);
+            SearchButton.Location = new Point(608, 40);
             SearchButton.Name = "SearchButton";
-            SearchButton.Size = new Size(71, 27);
+            SearchButton.Size = new Size(106, 40);
             SearchButton.TabIndex = 27;
             SearchButton.Text = "Search";
             SearchButton.UseVisualStyleBackColor = true;
@@ -384,29 +358,28 @@
             // 
             // Upbutton
             // 
-            Upbutton.Location = new Point(725, 272);
-            Upbutton.Margin = new Padding(2, 2, 2, 2);
+            Upbutton.Location = new Point(1088, 408);
             Upbutton.Name = "Upbutton";
-            Upbutton.Size = new Size(36, 27);
+            Upbutton.Size = new Size(54, 40);
             Upbutton.TabIndex = 28;
             Upbutton.Text = "/\\";
             Upbutton.UseVisualStyleBackColor = true;
+            Upbutton.Click += Upbutton_Click;
             // 
             // DownButton
             // 
-            DownButton.Location = new Point(725, 317);
-            DownButton.Margin = new Padding(2, 2, 2, 2);
+            DownButton.Location = new Point(1088, 476);
             DownButton.Name = "DownButton";
-            DownButton.Size = new Size(36, 27);
+            DownButton.Size = new Size(54, 40);
             DownButton.TabIndex = 29;
             DownButton.Text = "\\/";
             DownButton.UseVisualStyleBackColor = true;
             // 
             // MainWindow
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1264, 677);
+            ClientSize = new Size(1896, 1016);
             Controls.Add(DownButton);
             Controls.Add(Upbutton);
             Controls.Add(SearchButton);
@@ -438,7 +411,6 @@
             Controls.Add(NextButton);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(2, 2, 2, 2);
             Name = "MainWindow";
             Text = "Library Management System";
             menuStrip1.ResumeLayout(false);
