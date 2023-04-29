@@ -95,7 +95,7 @@ namespace LibrarySystem
                 CoverImageBox.Image = tempPhoto;
             }
         }
-        // Crops target image to square
+        // Crops target image to book aspect ratio
         private static Image CropImage(Image img)
         {
             int width = img.Width;
@@ -105,10 +105,8 @@ namespace LibrarySystem
             if (width > height)
                 isHor = true;
             Rectangle cropArea;
-            if (isHor)
-                cropArea = new Rectangle(dif / 2, 0, height, height);
-            else
-                cropArea = new Rectangle(0, dif / 2, width, width);
+            if (isHor) cropArea = new Rectangle(dif / 2, 0, height, height);
+            else cropArea = new Rectangle(0, dif / 2, width, width);
 
             Bitmap bmpImage = new Bitmap(img);
             Bitmap bmpCrop = bmpImage.Clone(cropArea, bmpImage.PixelFormat);
