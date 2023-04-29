@@ -60,15 +60,13 @@ namespace LibrarySystem
         public List<int> BookSearch(int isbn)
         {
             List<int> foundBookIsbn = new();    //stores all the search results into a list of ints for the isbn numbers
-            string isId = isbn.ToString();     //the "is" before the Id stands for ISBN Search just we have different labels for everything
+            string isbnString = isbn.ToString();     //the "is" before the Id stands for ISBN Search just we have different labels for everything
                                              //this line ^ also converts the target ID to a string
-            string tempId;
             foreach (Book b in BookDatabase.Values)
             {
-                tempId = b.Id.ToString();
-                if (tempId.Contains(isId) || tempId.Contains(b.Description) || tempId.Contains(b.Author) || tempId.Contains(b.Genre) || tempId.Contains(b.Publisher) || tempId.Contains(b.ISBN))
+                if (b.ISBN.ToString().Contains(isbnString))
                 {
-                    foundBookIsbn.Add(b.Id);
+                    foundBookIsbn.Add(b.ISBN);
                 }
             }
             foundBookIsbn.Sort();   //Sorts the results for easy ID access
@@ -82,7 +80,8 @@ namespace LibrarySystem
 
             foreach (Book b in BookDatabase.Values)
             {
-                if (b.Title.Contains(keyPhrase) || b.Publisher.Contains(keyPhrase) || b.Author.Contains(keyPhrase) || b.Description.Contains(keyPhrase) || b.Genre.Contains(keyPhrase))
+                if (b.Title.Contains(keyPhrase) || b.Publisher.Contains(keyPhrase) ||
+                    b.Author.Contains(keyPhrase) || b.Description.Contains(keyPhrase) || b.Genre.Contains(keyPhrase))
                 {
                     foundBookTitle.Add(b.ISBN);
                 }
