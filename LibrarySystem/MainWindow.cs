@@ -8,6 +8,7 @@ namespace LibrarySystem
         // Main Window Members
         private Inventory LibraryDatabase = new();
         private Image? tempPhoto;
+        private List<int> BookSearchResults; // Stores search results
         int CurSelection;
         public MainWindow()
         {
@@ -17,6 +18,12 @@ namespace LibrarySystem
         private void SearchButton_Click(object sender, EventArgs e)
         {
             string searchPhrase = SearchBox.Text;
+            if (int.TryParse(searchPhrase, out int resultInt)) BookSearchResults = LibraryDatabase.BookSearch(resultInt);
+            else BookSearchResults = LibraryDatabase.BookSearch(searchPhrase);
+            foreach (int isbn in BookSearchResults)
+            {
+
+            }
         }
         // Add-Book Menu Button Fuctionality
         private void addBookToolStripMenuItem_Click(object sender, EventArgs e)
