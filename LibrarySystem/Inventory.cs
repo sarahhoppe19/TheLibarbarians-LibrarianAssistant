@@ -87,5 +87,8 @@ namespace LibrarySystem
             }
             return foundBookTitle;
         }
+
+        //public bool ValidateUser(string username, string password)
+        //public User GetUser(int id)
     }
 }
