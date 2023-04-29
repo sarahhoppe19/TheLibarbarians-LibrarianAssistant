@@ -9,7 +9,7 @@ namespace LibrarySystem
         private Inventory LibraryDatabase = new();
         private Image? tempPhoto;
         private List<int>? BookSearchResults; // Stores search results (can be null)
-        int CurSelection;
+        int CurSelection; // Tracks current search result selection
         public MainWindow()
         {
             InitializeComponent();
@@ -20,6 +20,45 @@ namespace LibrarySystem
             string searchPhrase = SearchBox.Text;
             if (int.TryParse(searchPhrase, out int resultInt)) BookSearchResults = LibraryDatabase.BookSearch(resultInt);
             else BookSearchResults = LibraryDatabase.BookSearch(searchPhrase);
+            DisplaySearchResults();
+        }
+        private void DisplaySearchResults()
+        {
+            if (BookSearchResults == null)
+            {
+                ResultBox1.Text = string.Empty;
+                ResultBox2.Text = string.Empty;
+                ResultBox3.Text = string.Empty;
+                ResultBox4.Text = string.Empty;
+                return;
+            }
+            // Set search selection to default
+            CurSelection = 1;
+            ResultBox1.BackColor = Color.White;
+            ResultBox2.BackColor = SystemColors.Window;
+            ResultBox3.BackColor = SystemColors.Window;
+            ResultBox4.BackColor = SystemColors.Window;
+            PageTextBox.Text = "1/" + ((int)(BookSearchResults.Count/4)).ToString();
+            string result;
+            for (int i = 0; i < BookSearchResults.Count && i < 4; i++)
+            {
+                SetResultBox(i + 1,LibraryDatabase.GetBook(BookSearchResults[i]).Title);
+            }
+        }
+        // Sets target result box with text
+        private void SetResultBox(int resultBox, string text)
+        {
+            switch(resultBox) 
+            {
+                case 1:
+                    ResultBox1.Text = text; break;
+                case 2:
+                    ResultBox2.Text = text; break;
+                case 3:
+                    ResultBox3.Text = text; break;
+                case 4:
+                    ResultBox4.Text = text; break;
+            }
         }
         // Add-Book Menu Button Fuctionality
         private void addBookToolStripMenuItem_Click(object sender, EventArgs e)
