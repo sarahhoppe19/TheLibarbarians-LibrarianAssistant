@@ -42,23 +42,24 @@ namespace LibrarySystem
             PageTextBox.Text = "1/" + ((int)(BookSearchResults.Count / 4) + 1).ToString();
             string result;
             Book curBook;
+            // Loop through up to 4 search results and displays them
             for (int i = 0; i < BookSearchResults.Count && i < 4; i++)
             {
                 curBook = LibraryDatabase.GetBook(BookSearchResults[i]);
-                result = "ISBN: " + curBook.ISBN.ToString() + "\r\nTitle: " + curBook.Title + "\r\nAuthor: " + curBook.Author +
-                    "\tPublisher: " + curBook.Publisher + "\r\nGenre(s): " + curBook.Genre + "\r\nStock: " + curBook.Stock.ToString() + "\tPrice: " + curBook.Price.ToString();
-                SetResultBox(i + 1, result);
+                SetResultBox(i + 1, curBook);
             }
-            DisplayCurrentBook(LibraryDatabase.GetBook(BookSearchResults[0]));
+            DisplayCurrentBookDesc(LibraryDatabase.GetBook(BookSearchResults[0]));
         }
-        private void DisplayCurrentBook(Book curBook)
+        private void DisplayCurrentBookDesc(Book curBook)
         {
             CoverImageBox.Image = curBook.CoverPhoto;
             BookDescBox.Text = curBook.Description;
         }
-        // Sets target result box with text
-        private void SetResultBox(int resultBox, string text)
+        // Sets target result box with book info
+        private void SetResultBox(int resultBox, Book curBook)
         {
+            string text = "ISBN: " + curBook.ISBN.ToString() + "\r\nTitle: " + curBook.Title + "\r\nAuthor: " + curBook.Author +
+                    "\tPublisher: " + curBook.Publisher + "\r\nGenre(s): " + curBook.Genre + "\r\nStock: " + curBook.Stock.ToString() + "\tPrice: " + curBook.Price.ToString();
             switch (resultBox)
             {
                 case 1:
