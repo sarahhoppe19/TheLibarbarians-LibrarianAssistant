@@ -8,7 +8,7 @@ namespace LibrarySystem
         // Main Window Members
         private Inventory LibraryDatabase = new();
         private Image? tempPhoto;
-        private List<int> BookSearchResults; // Stores search results
+        private List<int>? BookSearchResults; // Stores search results (can be null)
         int CurSelection;
         public MainWindow()
         {
@@ -20,10 +20,6 @@ namespace LibrarySystem
             string searchPhrase = SearchBox.Text;
             if (int.TryParse(searchPhrase, out int resultInt)) BookSearchResults = LibraryDatabase.BookSearch(resultInt);
             else BookSearchResults = LibraryDatabase.BookSearch(searchPhrase);
-            foreach (int isbn in BookSearchResults)
-            {
-
-            }
         }
         // Add-Book Menu Button Fuctionality
         private void addBookToolStripMenuItem_Click(object sender, EventArgs e)
@@ -50,7 +46,10 @@ namespace LibrarySystem
             CoverImageBox.Image = null;
             ChangeSearchVisibility(true);
         }
-        // Shows/Hides Search Stuff (when true)
+        /// <summary>
+        /// Shows/Hides Search UI Elements (when true)
+        /// </summary>
+        /// <param name="visibility"></param>
         private void ChangeSearchVisibility(bool visibility)
         {
             // Search UI Elements
