@@ -12,7 +12,7 @@ namespace LibrarySystem
         public string  Name { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        List<int> CheckedOutBooks = new();
+        public List<int> CheckedOutBooks = new();
         
 
         /// <summary>
