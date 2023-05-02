@@ -30,6 +30,7 @@
         {
             menuStrip1 = new MenuStrip();
             loginToolStripMenuItem = new ToolStripMenuItem();
+            createUserToolStripMenuItem = new ToolStripMenuItem();
             inventoryToolStripMenuItem = new ToolStripMenuItem();
             addBookToolStripMenuItem = new ToolStripMenuItem();
             editBookToolStripMenuItem = new ToolStripMenuItem();
@@ -68,7 +69,6 @@
             UsernameBox = new TextBox();
             PasswordBox = new TextBox();
             PasswordEntryBox = new TextBox();
-            createUserToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)CoverImageBox).BeginInit();
             SuspendLayout();
@@ -90,6 +90,14 @@
             loginToolStripMenuItem.Name = "loginToolStripMenuItem";
             loginToolStripMenuItem.Size = new Size(97, 34);
             loginToolStripMenuItem.Text = "Login...";
+            loginToolStripMenuItem.Click += loginToolStripMenuItem_Click;
+            // 
+            // createUserToolStripMenuItem
+            // 
+            createUserToolStripMenuItem.Name = "createUserToolStripMenuItem";
+            createUserToolStripMenuItem.Size = new Size(315, 40);
+            createUserToolStripMenuItem.Text = "Create User";
+            createUserToolStripMenuItem.Visible = false;
             // 
             // inventoryToolStripMenuItem
             // 
@@ -417,13 +425,6 @@
             PasswordEntryBox.Size = new Size(282, 35);
             PasswordEntryBox.TabIndex = 33;
             PasswordEntryBox.Visible = false;
-            // 
-            // createUserToolStripMenuItem
-            // 
-            createUserToolStripMenuItem.Name = "createUserToolStripMenuItem";
-            createUserToolStripMenuItem.Size = new Size(315, 40);
-            createUserToolStripMenuItem.Text = "Create User";
-            createUserToolStripMenuItem.Visible = false;
             // 
             // MainWindow
             // 

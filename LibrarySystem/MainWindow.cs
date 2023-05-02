@@ -81,13 +81,15 @@ namespace LibrarySystem
         {
             // Hide all boxes
             ChangeSearchVisibility(false);
+            ChangeUserEntryVisibility(false);
+            ChangeBookCreateVisibility(true);
         }
         private void SaveBookButton_Click(object sender, EventArgs e)
         {
             uint isbn;
             if (!(uint.TryParse(ISBNEntryBox.Text, out isbn) ||
                 (double.TryParse(PriceEntryBox.Text, out double _))))
-            { ChangeSearchVisibility(true); return; } // Invalid Entry Case
+            { ChangeSearchVisibility(true); ChangeBookCreateVisibility(false); ChangeUserEntryVisibility(false); return; } // Invalid Entry Case
 
             if (double.TryParse(PriceEntryBox.Text, out double price))
                 LibraryDatabase.CreateBook((int)isbn,
@@ -107,6 +109,8 @@ namespace LibrarySystem
             PriceEntryBox.Text = String.Empty;
             DescEntryBox.Text = String.Empty;
             ChangeSearchVisibility(true);
+            ChangeBookCreateVisibility(false);
+            ChangeUserEntryVisibility(false);
         }
         /// <summary>
         /// Shows/Hides Search UI Elements (when true)
@@ -128,25 +132,34 @@ namespace LibrarySystem
             SearchButton.Visible = visibility;
             Upbutton.Visible = visibility;
             DownButton.Visible = visibility;
-            // Book Creation UI Elements
-            SaveBookButton.Visible = !visibility;
-            TitleBox.Visible = !visibility;
-            TitleEntryBox.Visible = !visibility;
-            ISBNBox.Visible = !visibility;
-            ISBNEntryBox.Visible = !visibility;
-            AuthorBox.Visible = !visibility;
-            AuthorEntryBox.Visible = !visibility;
-            PublisherBox.Visible = !visibility;
-            PublisherEntryBox.Visible = !visibility;
-            GenreBox.Visible = !visibility;
-            GenreEntryBox.Visible = !visibility;
-            PriceBox.Visible = !visibility;
-            PriceEntryBox.Visible = !visibility;
-            DescriptionBox.Visible = !visibility;
-            DescEntryBox.Visible = !visibility;
-            AddPhotoButton.Visible = !visibility;
         }
-
+        private void ChangeBookCreateVisibility(bool visibility)
+        {
+            // Book Creation UI Elements
+            SaveBookButton.Visible = visibility;
+            TitleBox.Visible = visibility;
+            TitleEntryBox.Visible = visibility;
+            ISBNBox.Visible = visibility;
+            ISBNEntryBox.Visible = visibility;
+            AuthorBox.Visible = visibility;
+            AuthorEntryBox.Visible = visibility;
+            PublisherBox.Visible = visibility;
+            PublisherEntryBox.Visible = visibility;
+            GenreBox.Visible = visibility;
+            GenreEntryBox.Visible = visibility;
+            PriceBox.Visible = visibility;
+            PriceEntryBox.Visible = visibility;
+            DescriptionBox.Visible = visibility;
+            DescEntryBox.Visible = visibility;
+            AddPhotoButton.Visible = visibility;
+        }
+        private void ChangeUserEntryVisibility(bool visibility)
+        {
+            UsernameBox.Visible = visibility;
+            UsernameEntryBox.Visible = visibility;
+            PasswordBox.Visible = visibility;
+            PasswordEntryBox.Visible = visibility;
+        }
         private void AddPhotoButton_Click(object sender, EventArgs e)
         {
             CoverImageBox.Visible = true;
@@ -266,6 +279,13 @@ namespace LibrarySystem
                 CoverImageBox.Image = null;
                 BookDescBox.Text = String.Empty;
             }
+        }
+
+        private void loginToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeUserEntryVisibility(true);
+            ChangeBookCreateVisibility(false);
+            ChangeSearchVisibility(false);
         }
     }
 }
