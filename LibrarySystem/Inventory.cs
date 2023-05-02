@@ -88,10 +88,17 @@ namespace LibrarySystem
             return foundBookTitle;
         }
 
-        //public bool ValidateUser(string username, string password)
-        //public User GetUser(int id)
-        //public bool CreateUser(int id, string username, string password, bool Admin)
-        //public List<int> GetCheckedOutBooks(int id)
         //public bool isAdmin(int id)
+
+        //public bool ValidateUser(string username, string password)
+
+        //public User GetUser(int id)
+
+        //public bool CreateUser(int id, string username, string password, bool Admin)
+
+        //public List<int> GetCheckedOutBooks(int id)
+
+
+
     }
 }
