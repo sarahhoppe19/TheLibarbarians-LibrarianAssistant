@@ -312,5 +312,15 @@ namespace LibrarySystem
             userToolStripMenuItem.Visible = true;
             loginToolStripMenuItem.Visible = false;
         }
+
+        private void PrevButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NextButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

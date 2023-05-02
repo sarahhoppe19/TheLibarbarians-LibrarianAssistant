@@ -31,6 +31,7 @@
             menuStrip1 = new MenuStrip();
             loginToolStripMenuItem = new ToolStripMenuItem();
             userToolStripMenuItem = new ToolStripMenuItem();
+            createUserToolStripMenuItem = new ToolStripMenuItem();
             logoutToolStripMenuItem = new ToolStripMenuItem();
             inventoryToolStripMenuItem = new ToolStripMenuItem();
             addBookToolStripMenuItem = new ToolStripMenuItem();
@@ -71,7 +72,6 @@
             PasswordBox = new TextBox();
             PasswordEntryBox = new TextBox();
             LoginButton = new Button();
-            createUserToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)CoverImageBox).BeginInit();
             SuspendLayout();
@@ -101,6 +101,13 @@
             userToolStripMenuItem.Size = new Size(72, 34);
             userToolStripMenuItem.Text = "User";
             userToolStripMenuItem.Visible = false;
+            // 
+            // createUserToolStripMenuItem
+            // 
+            createUserToolStripMenuItem.Name = "createUserToolStripMenuItem";
+            createUserToolStripMenuItem.Size = new Size(315, 40);
+            createUserToolStripMenuItem.Text = "Create User";
+            createUserToolStripMenuItem.Visible = false;
             // 
             // logoutToolStripMenuItem
             // 
@@ -136,6 +143,7 @@
             NextButton.TabIndex = 1;
             NextButton.Text = "Next>>";
             NextButton.UseVisualStyleBackColor = true;
+            NextButton.Click += NextButton_Click;
             // 
             // SearchBox
             // 
@@ -152,6 +160,7 @@
             PrevButton.TabIndex = 3;
             PrevButton.Text = "<<Prev";
             PrevButton.UseVisualStyleBackColor = true;
+            PrevButton.Click += PrevButton_Click;
             // 
             // PageTextBox
             // 
@@ -445,13 +454,6 @@
             LoginButton.UseVisualStyleBackColor = true;
             LoginButton.Visible = false;
             LoginButton.Click += LoginButton_Click;
-            // 
-            // createUserToolStripMenuItem
-            // 
-            createUserToolStripMenuItem.Name = "createUserToolStripMenuItem";
-            createUserToolStripMenuItem.Size = new Size(315, 40);
-            createUserToolStripMenuItem.Text = "Create User";
-            createUserToolStripMenuItem.Visible = false;
             // 
             // MainWindow
             // 

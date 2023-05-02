@@ -99,7 +99,13 @@ namespace LibrarySystem
             return foundBookTitle;
         }
 
-        //public bool isAdmin(int id)
+        public bool isAdmin(int id)
+        {
+            Admin admin = (UserDatabase[id] as Admin);
+            if (admin == null) return false;
+
+            return true;
+        }
 
         //public bool ValidateUser(string username, string password)
 
