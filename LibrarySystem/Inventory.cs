@@ -130,7 +130,10 @@ namespace LibrarySystem
             return false;
         }
 
-        //public List<int> GetCheckedOutBooks(int id)
+        public List<int> GetCheckedOutBooks(int id)
+        {
+            return UserDatabase[id].CheckedOutBooks;
+        }
 
 
 
