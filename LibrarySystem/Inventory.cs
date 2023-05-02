@@ -109,7 +109,17 @@ namespace LibrarySystem
 
         //public bool ValidateUser(string username, string password)
 
-        //public User GetUser(int id)
+        public User GetUser(int id)
+        {
+            foreach (User u in UserDatabase.Values)
+            {
+                if (u.ID == id)
+                {
+                    return u;
+                }
+            }
+            return null;
+        }
 
         //public bool CreateUser(int id, string username, string password, bool Admin)
 
