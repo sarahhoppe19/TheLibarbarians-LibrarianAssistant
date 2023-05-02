@@ -13,7 +13,18 @@ namespace LibrarySystem
         Dictionary<int, Book> BookDatabase = new Dictionary<int, Book>();
         Dictionary<int, User> UserDatabase = new Dictionary<int, User>();
 
-        // Creates a book from input - returns true if successful
+        /// <summary>
+        /// Creates a book from input
+        /// </summary>
+        /// <param name="isbn"></param>
+        /// <param name="title"></param>
+        /// <param name="description"></param>
+        /// <param name="author"></param>
+        /// <param name="publisher"></param>
+        /// <param name="genre"></param>
+        /// <param name="stock"></param>
+        /// <param name="price"></param>
+        /// <returns>bool for success</returns>
         public bool CreateBook(int isbn, string title, string description, string author,
             string publisher, string genre, int stock, double price)
         {
