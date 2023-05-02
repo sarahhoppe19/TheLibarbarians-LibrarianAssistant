@@ -107,7 +107,21 @@ namespace LibrarySystem
             return true;
         }
 
-        //public bool ValidateUser(string username, string password)
+        public bool ValidateUser(string username, string password)  //used to login and validate the email matches the password
+        {
+            foreach(User u in UserDatabase.Values)
+            {
+                if (u.Name == username)
+                {
+                    if (u.Password == password)
+                    {
+                        return true;
+                    }
+                    else { return false; }
+                }
+            }
+            return false;
+        }
 
         public User GetUser(int id)
         {
