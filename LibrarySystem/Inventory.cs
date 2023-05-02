@@ -103,7 +103,6 @@ namespace LibrarySystem
         {
             Admin admin = (UserDatabase[id] as Admin);
             if (admin == null) return false;
-
             return true;
         }
 
@@ -135,9 +134,20 @@ namespace LibrarySystem
             return null;
         }
 
-        //public bool CreateUser(int id, string username, string password, bool Admin)
+        public bool CreateUser(int id, string username, string password, bool Admin)
+        {
+            if (UserDatabase.ContainsKey(id))
+                return false;
+            UserDatabase.Add(id, new User(id, username, password));
+            if (UserDatabase.ContainsKey(id))
+                return true;
+            return false;
+        }
 
-        //public List<int> GetCheckedOutBooks(int id)
+        public List<int> GetCheckedOutBooks(int id)
+        {
+            return UserDatabase[id].CheckedOutBooks;
+        }
 
 
 
