@@ -306,7 +306,7 @@ namespace LibrarySystem
             UsernameEntryBox.Text = String.Empty;
             PasswordEntryBox.Text = String.Empty;
             ChangeUserEntryVisibility(false);
-            ChangeBookCreateVisibility(true);
+            ChangeBookCreateVisibility(false);
             ChangeSearchVisibility(true);
             userToolStripMenuItem.Text = "Welcome, Loser";
             userToolStripMenuItem.Visible = true;
