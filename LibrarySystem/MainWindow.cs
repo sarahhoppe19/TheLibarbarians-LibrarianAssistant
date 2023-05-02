@@ -159,6 +159,7 @@ namespace LibrarySystem
             UsernameEntryBox.Visible = visibility;
             PasswordBox.Visible = visibility;
             PasswordEntryBox.Visible = visibility;
+            LoginButton.Visible = visibility;
         }
         private void AddPhotoButton_Click(object sender, EventArgs e)
         {
@@ -286,6 +287,17 @@ namespace LibrarySystem
             ChangeUserEntryVisibility(true);
             ChangeBookCreateVisibility(false);
             ChangeSearchVisibility(false);
+        }
+
+        private void LoginButton_Click(object sender, EventArgs e)
+        {
+
+            UsernameEntryBox.Text = String.Empty;
+            PasswordEntryBox.Text = String.Empty;
+            ChangeUserEntryVisibility(true);
+            ChangeBookCreateVisibility(false);
+            ChangeSearchVisibility(false);
+
         }
     }
 }

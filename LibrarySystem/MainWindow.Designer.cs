@@ -69,6 +69,7 @@
             UsernameBox = new TextBox();
             PasswordBox = new TextBox();
             PasswordEntryBox = new TextBox();
+            LoginButton = new Button();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)CoverImageBox).BeginInit();
             SuspendLayout();
@@ -95,7 +96,7 @@
             // createUserToolStripMenuItem
             // 
             createUserToolStripMenuItem.Name = "createUserToolStripMenuItem";
-            createUserToolStripMenuItem.Size = new Size(315, 40);
+            createUserToolStripMenuItem.Size = new Size(238, 40);
             createUserToolStripMenuItem.Text = "Create User";
             createUserToolStripMenuItem.Visible = false;
             // 
@@ -426,11 +427,23 @@
             PasswordEntryBox.TabIndex = 33;
             PasswordEntryBox.Visible = false;
             // 
+            // LoginButton
+            // 
+            LoginButton.Location = new Point(800, 586);
+            LoginButton.Name = "LoginButton";
+            LoginButton.Size = new Size(131, 40);
+            LoginButton.TabIndex = 34;
+            LoginButton.Text = "Login";
+            LoginButton.UseVisualStyleBackColor = true;
+            LoginButton.Visible = false;
+            LoginButton.Click += LoginButton_Click;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1896, 1016);
+            Controls.Add(LoginButton);
             Controls.Add(PasswordEntryBox);
             Controls.Add(PasswordBox);
             Controls.Add(UsernameBox);
@@ -518,5 +531,6 @@
         private TextBox PasswordBox;
         private TextBox PasswordEntryBox;
         private ToolStripMenuItem createUserToolStripMenuItem;
+        private Button LoginButton;
     }
 }
