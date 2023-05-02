@@ -64,6 +64,11 @@
             Upbutton = new Button();
             DownButton = new Button();
             saveFileDialog1 = new SaveFileDialog();
+            UsernameEntryBox = new TextBox();
+            UsernameBox = new TextBox();
+            PasswordBox = new TextBox();
+            PasswordEntryBox = new TextBox();
+            createUserToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)CoverImageBox).BeginInit();
             SuspendLayout();
@@ -81,6 +86,7 @@
             // 
             // loginToolStripMenuItem
             // 
+            loginToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { createUserToolStripMenuItem });
             loginToolStripMenuItem.Name = "loginToolStripMenuItem";
             loginToolStripMenuItem.Size = new Size(97, 34);
             loginToolStripMenuItem.Text = "Login...";
@@ -376,11 +382,58 @@
             DownButton.UseVisualStyleBackColor = true;
             DownButton.Click += DownButton_Click;
             // 
+            // UsernameEntryBox
+            // 
+            UsernameEntryBox.Location = new Point(800, 413);
+            UsernameEntryBox.Name = "UsernameEntryBox";
+            UsernameEntryBox.Size = new Size(282, 35);
+            UsernameEntryBox.TabIndex = 30;
+            UsernameEntryBox.WordWrap = false;
+            // 
+            // UsernameBox
+            // 
+            UsernameBox.Enabled = false;
+            UsernameBox.Location = new Point(800, 372);
+            UsernameBox.Name = "UsernameBox";
+            UsernameBox.Size = new Size(175, 35);
+            UsernameBox.TabIndex = 31;
+            UsernameBox.Text = "Enter Username";
+            UsernameBox.Visible = false;
+            // 
+            // PasswordBox
+            // 
+            PasswordBox.Enabled = false;
+            PasswordBox.Location = new Point(800, 454);
+            PasswordBox.Name = "PasswordBox";
+            PasswordBox.Size = new Size(175, 35);
+            PasswordBox.TabIndex = 32;
+            PasswordBox.Text = "Enter Password";
+            PasswordBox.Visible = false;
+            // 
+            // PasswordEntryBox
+            // 
+            PasswordEntryBox.Location = new Point(800, 495);
+            PasswordEntryBox.Name = "PasswordEntryBox";
+            PasswordEntryBox.Size = new Size(282, 35);
+            PasswordEntryBox.TabIndex = 33;
+            PasswordEntryBox.Visible = false;
+            // 
+            // createUserToolStripMenuItem
+            // 
+            createUserToolStripMenuItem.Name = "createUserToolStripMenuItem";
+            createUserToolStripMenuItem.Size = new Size(315, 40);
+            createUserToolStripMenuItem.Text = "Create User";
+            createUserToolStripMenuItem.Visible = false;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1896, 1016);
+            Controls.Add(PasswordEntryBox);
+            Controls.Add(PasswordBox);
+            Controls.Add(UsernameBox);
+            Controls.Add(UsernameEntryBox);
             Controls.Add(DownButton);
             Controls.Add(Upbutton);
             Controls.Add(SearchButton);
@@ -459,5 +512,10 @@
         private Button Upbutton;
         private Button DownButton;
         private SaveFileDialog saveFileDialog1;
+        private TextBox UsernameEntryBox;
+        private TextBox UsernameBox;
+        private TextBox PasswordBox;
+        private TextBox PasswordEntryBox;
+        private ToolStripMenuItem createUserToolStripMenuItem;
     }
 }

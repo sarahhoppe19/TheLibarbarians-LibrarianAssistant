@@ -42,7 +42,7 @@ namespace LibrarySystem
             ResultBox3.BackColor = Color.LightGray;
             ResultBox4.BackColor = Color.LightGray;
             if (BookSearchResults.Count % 4 != 0) PageTextBox.Text = "1/" + ((int)((BookSearchResults.Count + (4 - BookSearchResults.Count % 4)) / 4)).ToString();
-            else PageTextBox.Text = "1/" + (BookSearchResults.Count/ 4).ToString();
+            else PageTextBox.Text = "1/" + (BookSearchResults.Count / 4).ToString();
             string result;
             Book curBook;
             // Loop through up to 4 search results and displays them
@@ -222,9 +222,9 @@ namespace LibrarySystem
                     break;
             }
             Book temp;
-            if (CurSelection-1 + (CurPage - 1) * 4 < BookSearchResults.Count)
+            if (CurSelection - 1 + (CurPage - 1) * 4 < BookSearchResults.Count)
             {
-                temp = LibraryDatabase.GetBook(BookSearchResults[CurSelection-1 + (CurPage - 1) * 4]);
+                temp = LibraryDatabase.GetBook(BookSearchResults[CurSelection - 1 + (CurPage - 1) * 4]);
                 CoverImageBox.Image = temp.CoverPhoto;
                 BookDescBox.Text = temp.Description;
             }
@@ -255,9 +255,9 @@ namespace LibrarySystem
                     break;
             }
             Book temp;
-            if (CurSelection-1 + (CurPage - 1) * 4 < BookSearchResults.Count)
+            if (CurSelection - 1 + (CurPage - 1) * 4 < BookSearchResults.Count)
             {
-                temp = LibraryDatabase.GetBook(BookSearchResults[CurSelection-1 + (CurPage - 1) * 4]);
+                temp = LibraryDatabase.GetBook(BookSearchResults[CurSelection - 1 + (CurPage - 1) * 4]);
                 CoverImageBox.Image = temp.CoverPhoto;
                 BookDescBox.Text = temp.Description;
             }
