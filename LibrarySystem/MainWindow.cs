@@ -300,6 +300,9 @@ namespace LibrarySystem
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
+
+
+            // End of Login Sequence
             UsernameEntryBox.Text = String.Empty;
             PasswordEntryBox.Text = String.Empty;
             ChangeUserEntryVisibility(false);
