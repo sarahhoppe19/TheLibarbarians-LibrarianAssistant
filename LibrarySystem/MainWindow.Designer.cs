@@ -396,7 +396,7 @@
             UsernameEntryBox.Name = "UsernameEntryBox";
             UsernameEntryBox.Size = new Size(282, 35);
             UsernameEntryBox.TabIndex = 30;
-            UsernameEntryBox.WordWrap = false;
+            UsernameEntryBox.Visible = false;
             // 
             // UsernameBox
             // 
