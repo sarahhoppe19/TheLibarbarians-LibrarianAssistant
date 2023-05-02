@@ -19,6 +19,6 @@ namespace LibrarySystem
         /// <param name="name"></param>
         /// <param name="email"></param>
         /// <param name="password"></param>
-        public Admin(int id, string name, string email, string password) : base(id, name, email, password) { }
+        public Admin(int id, string name, string password) : base(id, name, password) { }
     }
 }

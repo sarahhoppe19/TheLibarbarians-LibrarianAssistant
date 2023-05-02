@@ -90,5 +90,6 @@ namespace LibrarySystem
 
         //public bool ValidateUser(string username, string password)
         //public User GetUser(int id)
+        //public bool CreateUser()
     }
 }
