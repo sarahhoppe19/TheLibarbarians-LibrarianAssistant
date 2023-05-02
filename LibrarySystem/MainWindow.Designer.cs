@@ -30,7 +30,8 @@
         {
             menuStrip1 = new MenuStrip();
             loginToolStripMenuItem = new ToolStripMenuItem();
-            createUserToolStripMenuItem = new ToolStripMenuItem();
+            userToolStripMenuItem = new ToolStripMenuItem();
+            logoutToolStripMenuItem = new ToolStripMenuItem();
             inventoryToolStripMenuItem = new ToolStripMenuItem();
             addBookToolStripMenuItem = new ToolStripMenuItem();
             editBookToolStripMenuItem = new ToolStripMenuItem();
@@ -70,6 +71,7 @@
             PasswordBox = new TextBox();
             PasswordEntryBox = new TextBox();
             LoginButton = new Button();
+            createUserToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)CoverImageBox).BeginInit();
             SuspendLayout();
@@ -77,7 +79,7 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { loginToolStripMenuItem, inventoryToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { loginToolStripMenuItem, userToolStripMenuItem, inventoryToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(9, 3, 0, 3);
@@ -87,18 +89,24 @@
             // 
             // loginToolStripMenuItem
             // 
-            loginToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { createUserToolStripMenuItem });
             loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            loginToolStripMenuItem.Size = new Size(97, 34);
-            loginToolStripMenuItem.Text = "Login...";
+            loginToolStripMenuItem.Size = new Size(82, 34);
+            loginToolStripMenuItem.Text = "Login";
             loginToolStripMenuItem.Click += loginToolStripMenuItem_Click;
             // 
-            // createUserToolStripMenuItem
+            // userToolStripMenuItem
             // 
-            createUserToolStripMenuItem.Name = "createUserToolStripMenuItem";
-            createUserToolStripMenuItem.Size = new Size(238, 40);
-            createUserToolStripMenuItem.Text = "Create User";
-            createUserToolStripMenuItem.Visible = false;
+            userToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { createUserToolStripMenuItem, logoutToolStripMenuItem });
+            userToolStripMenuItem.Name = "userToolStripMenuItem";
+            userToolStripMenuItem.Size = new Size(72, 34);
+            userToolStripMenuItem.Text = "User";
+            userToolStripMenuItem.Visible = false;
+            // 
+            // logoutToolStripMenuItem
+            // 
+            logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            logoutToolStripMenuItem.Size = new Size(315, 40);
+            logoutToolStripMenuItem.Text = "Logout";
             // 
             // inventoryToolStripMenuItem
             // 
@@ -438,6 +446,13 @@
             LoginButton.Visible = false;
             LoginButton.Click += LoginButton_Click;
             // 
+            // createUserToolStripMenuItem
+            // 
+            createUserToolStripMenuItem.Name = "createUserToolStripMenuItem";
+            createUserToolStripMenuItem.Size = new Size(315, 40);
+            createUserToolStripMenuItem.Text = "Create User";
+            createUserToolStripMenuItem.Visible = false;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
@@ -530,7 +545,9 @@
         private TextBox UsernameBox;
         private TextBox PasswordBox;
         private TextBox PasswordEntryBox;
-        private ToolStripMenuItem createUserToolStripMenuItem;
         private Button LoginButton;
+        private ToolStripMenuItem userToolStripMenuItem;
+        private ToolStripMenuItem logoutToolStripMenuItem;
+        private ToolStripMenuItem createUserToolStripMenuItem;
     }
 }

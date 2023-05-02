@@ -9,6 +9,7 @@ namespace LibrarySystem
         private Inventory LibraryDatabase = new();
         private Image? tempPhoto;
         private List<int>? BookSearchResults; // Stores search results (can be null)
+        int? CurUser;
         int CurSelection; // Tracks current search result selection
         int CurPage; // Tracks current page
         public MainWindow()
@@ -113,7 +114,7 @@ namespace LibrarySystem
             ChangeUserEntryVisibility(false);
         }
         /// <summary>
-        /// Shows/Hides Search UI Elements (when true)
+        /// Shows/Hides Search UI Elements
         /// </summary>
         /// <param name="visibility"></param>
         private void ChangeSearchVisibility(bool visibility)
@@ -133,6 +134,10 @@ namespace LibrarySystem
             Upbutton.Visible = visibility;
             DownButton.Visible = visibility;
         }
+        /// <summary>
+        /// Shows/Hides Book Creating UI Elements
+        /// </summary>
+        /// <param name="visibility"></param>
         private void ChangeBookCreateVisibility(bool visibility)
         {
             // Book Creation UI Elements
@@ -153,6 +158,10 @@ namespace LibrarySystem
             DescEntryBox.Visible = visibility;
             AddPhotoButton.Visible = visibility;
         }
+        /// <summary>
+        /// Shows/Hides User Entry UI Elements
+        /// </summary>
+        /// <param name="visibility"></param>
         private void ChangeUserEntryVisibility(bool visibility)
         {
             UsernameBox.Visible = visibility;
@@ -291,13 +300,14 @@ namespace LibrarySystem
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-
             UsernameEntryBox.Text = String.Empty;
             PasswordEntryBox.Text = String.Empty;
-            ChangeUserEntryVisibility(true);
-            ChangeBookCreateVisibility(false);
-            ChangeSearchVisibility(false);
-
+            ChangeUserEntryVisibility(false);
+            ChangeBookCreateVisibility(true);
+            ChangeSearchVisibility(true);
+            userToolStripMenuItem.Text = "Welcome, Loser";
+            userToolStripMenuItem.Visible = true;
+            loginToolStripMenuItem.Visible = false;
         }
     }
 }
