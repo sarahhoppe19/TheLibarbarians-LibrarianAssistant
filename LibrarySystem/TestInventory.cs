@@ -29,10 +29,12 @@ namespace LibrarySystem
         public void TestUserSearch()
         {
             testInventory.CreateUser(012345678, "gracecovarrubias", "ilovecoding", false);
-            if (testInventory.UserSearch(012345678) == )
-                throw new Exception("User Search Failed (Could not find created user)");
-            if (testInventory.UserSearch(023456789))
+            if (testInventory.UserSearch(012345678).Count != 1)
+                throw new Exception("User Search Failed (Nothing was added to TestInventory)");
+            if (testInventory.UserSearch(023456789)[1] == 023456789)
                 throw new Exception("User Search Failed (Found user it should not have found)");
+            if (testInventory.UserSearch(01234567)[1] != 012345678)
+                throw new Exception("User Search Failed (Could not find created user)");
         }
 
 
