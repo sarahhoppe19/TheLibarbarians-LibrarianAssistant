@@ -15,6 +15,7 @@ namespace LibrarySystem
             TestCreateBook();
             TestBookSearch();
             TestUserSearch();
+            TestisAdmin()
         }
 
         /// <summary>
@@ -60,8 +61,15 @@ namespace LibrarySystem
             if (!testInventory.UserSearch(012345678).Contains(012345678))
                 throw new Exception("User Search Failed (Could not find created user)");
         }
+        //isAdmin test - David
+        public static void TestisAdmin()
+        {
+            Inventory testInventory = new();
+            testInventory.CreateUser(010101010, "davidhofsetz", "securepassword", true);
+            if (!testInventory.GetUser(010101010).Admin)
+                throw new Exception("Admin Check Failed (User was created as admin but returned false)");
+        }
 
-
-        //Extra Tests: (isAdmin, GetBook, GetUser, etc.) - Boaz
+        //Extra Tests: ( GetBook, GetUser, etc.) - Boaz
     }
 }

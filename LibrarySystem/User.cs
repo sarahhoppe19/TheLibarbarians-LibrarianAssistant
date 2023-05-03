@@ -12,7 +12,7 @@ namespace LibrarySystem
         public string  Name { get; set; }
         public string Password { get; set; }
         public List<int> CheckedOutBooks = new();
-        
+        public bool Admin { get; set; }
 
         /// <summary>
         /// Default constructor
@@ -30,11 +30,12 @@ namespace LibrarySystem
         /// <param name="name"></param>
         /// <param name="email"></param>
         /// <param name="password"></param>
-        public User(int id,  string name, string password)
+        public User(int id,  string name, string password, bool admin)
         {
             ID = id;
             Name = name;
             Password = password;
+            Admin = admin;
         }
     }
 }
