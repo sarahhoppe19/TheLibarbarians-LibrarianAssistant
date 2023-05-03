@@ -22,6 +22,7 @@ namespace LibrarySystem
             string searchPhrase = SearchBox.Text;
             if (int.TryParse(searchPhrase, out int resultInt)) BookSearchResults = LibraryDatabase.BookSearch(resultInt);
             else BookSearchResults = LibraryDatabase.BookSearch(searchPhrase);
+            CurPage = 1;
             DisplaySearchResults();
         }
         private void DisplaySearchResults()
@@ -37,23 +38,23 @@ namespace LibrarySystem
             }
             // Set search selection to default
             CurSelection = 1;
-            CurPage = 1;
             ResultBox1.BackColor = Color.White;
             ResultBox2.BackColor = Color.LightGray;
             ResultBox3.BackColor = Color.LightGray;
             ResultBox4.BackColor = Color.LightGray;
-            if (BookSearchResults.Count % 4 != 0) PageTextBox.Text = "1/" + ((int)((BookSearchResults.Count + (4 - BookSearchResults.Count % 4)) / 4)).ToString();
-            else PageTextBox.Text = "1/" + (BookSearchResults.Count / 4).ToString();
+            if (BookSearchResults.Count % 4 != 0) PageTextBox.Text = CurPage.ToString() + "/" + ((int)((BookSearchResults.Count + (4 - BookSearchResults.Count % 4)) / 4)).ToString();
+            else PageTextBox.Text = CurPage.ToString() + "/" + (BookSearchResults.Count / 4).ToString();
             string result;
             Book curBook;
             // Loop through up to 4 search results and displays them
-            for (int i = 0; i < BookSearchResults.Count && i < 4; i++)
+            for (int i = ((CurPage-1)*4); i < BookSearchResults.Count && i < 4*CurPage; i++)
             {
                 curBook = LibraryDatabase.GetBook(BookSearchResults[i]);
-                SetResultBox(i + 1, curBook);
+                SetResultBox((i%4) + 1, curBook);
             }
             DisplayCurrentBookDesc(LibraryDatabase.GetBook(BookSearchResults[0]));
         }
+
         private void DisplayCurrentBookDesc(Book curBook)
         {
             CoverImageBox.Image = curBook.CoverPhoto;
@@ -317,12 +318,20 @@ namespace LibrarySystem
         // David's section:
         private void PrevButton_Click(object sender, EventArgs e)
         {
-
+            if (CurPage > 1)
+            {
+                CurPage--;
+                DisplaySearchResults();
+            }
         }
 
         private void NextButton_Click(object sender, EventArgs e)
         {
-
+            if (BookSearchResults.Count > (CurPage * 4))
+            {
+                CurPage++;
+                DisplaySearchResults();
+            }
         }
     }
 }
