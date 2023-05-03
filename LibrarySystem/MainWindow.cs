@@ -328,7 +328,7 @@ namespace LibrarySystem
 
         private void NextButton_Click(object sender, EventArgs e)
         {
-            if (BookSearchResults.Count > (CurPage * 4))
+            if (BookSearchResults != null && BookSearchResults.Count > (CurPage * 4))
             {
                 CurPage++;
                 DisplaySearchResults();
