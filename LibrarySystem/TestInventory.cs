@@ -14,6 +14,7 @@ namespace LibrarySystem
         public void RunAllTests()
         {
             TestCreateBook();
+            TestBookSearch();
             TestUserSearch();
         }
 
@@ -28,6 +29,22 @@ namespace LibrarySystem
         }
 
         //Book Search Tests: (Include all edge cases in different functions)  - Sarah
+        public void TestBookSearch()
+        {
+            testInventory.CreateBook(978, "Some Book", "We out here.", "Maas", "Scholastic", "Sci-Fi", 1, 10.50);
+            if (!testInventory.BookSearch(978).Contains(978))
+                throw new Exception("Book Search Failed (Book was not found in TestInventory)");
+            if (!testInventory.BookSearch("Some Book").Contains(978))
+                throw new Exception("Book Search Failed (Book was found but wrong ISBN)");
+            if (!testInventory.BookSearch("We out here.").Contains(978))
+                throw new Exception("Book Search Failed (Book was found but wrong Description)");
+            if (!testInventory.BookSearch("Maas").Contains(978))
+                throw new Exception("Book Search Failed (Book was found but wrong Author)");
+            if (!testInventory.BookSearch("Scholastic").Contains(978))
+                throw new Exception("Book Search Failed (Book was found but wrong Publisher)");
+            if (!testInventory.BookSearch("Sci-Fi").Contains(978))
+                throw new Exception("Book Search Failed (Book was found but wrong Genre)");               
+        }
 
 
         //User Search tests: (Include all edge cases in different functions) - Grace
