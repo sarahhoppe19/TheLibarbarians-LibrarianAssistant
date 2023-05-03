@@ -315,8 +315,6 @@ namespace LibrarySystem
             loginToolStripMenuItem.Visible = false;
         }
 
-
-        // David's section:
         private void PrevButton_Click(object sender, EventArgs e)
         {
             if (CurPage > 1)
