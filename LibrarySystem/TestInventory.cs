@@ -15,7 +15,7 @@ namespace LibrarySystem
             TestCreateBook();
             TestBookSearch();
             TestUserSearch();
-            TestisAdmin()
+            TestisAdmin();
         }
 
         /// <summary>
