@@ -29,7 +29,7 @@ namespace LibrarySystem
                 throw new Exception("Create Book Test Failed");
         }
 
-        //Book Search Tests: (Include all edge cases in different functions)  - Sarah
+        //Book Search Tests:
         public static void TestBookSearch()
         {
             Inventory testInventory = new();
@@ -49,7 +49,7 @@ namespace LibrarySystem
         }
 
 
-        //User Search tests: (Include all edge cases in different functions) - Grace
+        //User Search tests:
         public static void TestUserSearch()
         {
             Inventory testInventory = new();
@@ -61,7 +61,7 @@ namespace LibrarySystem
             if (!testInventory.UserSearch(012345678).Contains(012345678))
                 throw new Exception("User Search Failed (Could not find created user)");
         }
-        //isAdmin test - David
+        //isAdmin test
         public static void TestisAdmin()
         {
             Inventory testInventory = new();
