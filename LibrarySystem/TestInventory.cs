@@ -16,6 +16,8 @@ namespace LibrarySystem
             TestBookSearch();
             TestUserSearch();
             TestisAdmin();
+            TestGetBook();
+            TestGetUser();
         }
 
         /// <summary>
@@ -45,7 +47,7 @@ namespace LibrarySystem
             if (!testInventory.BookSearch("Scholastic").Contains(978))
                 throw new Exception("Book Search Failed (Book was found but wrong Publisher)");
             if (!testInventory.BookSearch("Sci-Fi").Contains(978))
-                throw new Exception("Book Search Failed (Book was found but wrong Genre)");               
+                throw new Exception("Book Search Failed (Book was found but wrong Genre)");
         }
 
 
@@ -71,5 +73,29 @@ namespace LibrarySystem
         }
 
         //Extra Tests: ( GetBook, GetUser, etc.) - Boaz
+
+        public static void TestGetBook()
+        {
+            Inventory testInventory = new();
+            Book testBook = new Book();
+            testInventory.CreateBook(1, "At the Back of the North Wind", "Idk I guesss the north wind has some kind of back", "Boaz Glassberg", "A24", "Horror", 1, 3.5);
+            testBook = testInventory.GetBook(1);
+            if(testBook == null)
+            {
+                throw new Exception("Book could not be fetched");
+            }
+        }
+
+        public static void TestGetUser()
+        {
+            Inventory testInventory = new();
+            User newUser = new User();
+            testInventory.CreateUser(011710418, "boazglassberg", "testpassword", false);
+            newUser = testInventory.GetUser(011710418);
+            if (testInventory.GetUser(011710418) == null)
+            {
+                throw new Exception("User could not be fetched");
+            }
+        }
     }
 }
