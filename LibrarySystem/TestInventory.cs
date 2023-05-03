@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace LibrarySystem
 {
-    internal class TestInventory
+    internal static class TestInventory
     {
-        Inventory testInventory = new();
 
         // Calls all tests
         public void RunAllTests()
@@ -22,15 +21,17 @@ namespace LibrarySystem
         /// Tests Create Book
         /// </summary>
         /// <exception cref="Exception"></exception>
-        public void TestCreateBook()
+        public static void TestCreateBook()
         {
+            Inventory testInventory = new();
             if (!testInventory.CreateBook(123, "ahaha", "advsun\neiaubnvaer", "Maas", "Penguin", "Adventure", 0, 15.00))
                 throw new Exception("Create Book Test Failed");
         }
 
         //Book Search Tests: (Include all edge cases in different functions)  - Sarah
-        public void TestBookSearch()
+        public static void TestBookSearch()
         {
+            Inventory testInventory = new();
             testInventory.CreateBook(978, "Some Book", "We out here.", "Maas", "Scholastic", "Sci-Fi", 1, 10.50);
             if (!testInventory.BookSearch(978).Contains(978))
                 throw new Exception("Book Search Failed (Book was not found in TestInventory)");
@@ -48,8 +49,9 @@ namespace LibrarySystem
 
 
         //User Search tests: (Include all edge cases in different functions) - Grace
-        public void TestUserSearch()
+        public static void TestUserSearch()
         {
+            Inventory testInventory = new();
             testInventory.CreateUser(012345678, "gracecovarrubias", "ilovecoding", false);
             if (testInventory.UserSearch(012345678).Count != 1)
                 throw new Exception("User Search Failed (Nothing was added to TestInventory)");
