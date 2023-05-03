@@ -101,9 +101,8 @@ namespace LibrarySystem
 
         public bool isAdmin(int id)
         {
-            Admin admin = (UserDatabase[id] as Admin);
-            if (admin == null) return false;
-            return true;
+            if (UserDatabase.ContainsKey(id) && UserDatabase[id].Admin) return true;
+            return false;
         }
 
         public bool ValidateUser(string username, string password)  //used to login and validate the email matches the password
