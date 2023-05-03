@@ -28,8 +28,8 @@ namespace LibrarySystem
         //User Search tests: (Include all edge cases in different functions) - Grace
         public void TestUserSearch()
         {
-            testInventory.CreateUser(012345678, "gracecovarrubias", "ilovecoding", 0);
-            if (!testInventory.UserSearch(012345678))
+            testInventory.CreateUser(012345678, "gracecovarrubias", "ilovecoding", false);
+            if (testInventory.UserSearch(012345678) == )
                 throw new Exception("User Search Failed (Could not find created user)");
             if (testInventory.UserSearch(023456789))
                 throw new Exception("User Search Failed (Found user it should not have found)");
