@@ -9,8 +9,13 @@ namespace LibrarySystem
     internal class TestInventory
     {
         Inventory testInventory = new();
+
         // Calls all tests
-        //public void RunTests()
+        public void RunAllTests()
+        {
+            TestCreateBook();
+            TestUserSearch();
+        }
 
         /// <summary>
         /// Tests Create Book
