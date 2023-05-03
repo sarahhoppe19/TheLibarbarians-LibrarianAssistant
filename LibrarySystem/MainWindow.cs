@@ -52,7 +52,7 @@ namespace LibrarySystem
                 curBook = LibraryDatabase.GetBook(BookSearchResults[i]);
                 SetResultBox((i%4) + 1, curBook);
             }
-            DisplayCurrentBookDesc(LibraryDatabase.GetBook(BookSearchResults[0]));
+            DisplayCurrentBookDesc(LibraryDatabase.GetBook(BookSearchResults[0+4*(CurPage-1)]));
         }
 
         private void DisplayCurrentBookDesc(Book curBook)
