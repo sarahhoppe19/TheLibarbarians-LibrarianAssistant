@@ -15,6 +15,7 @@ namespace LibrarySystem
         public MainWindow()
         {
             InitializeComponent();
+            TestInventory.RunAllTests();
         }
         // Search button
         private void SearchButton_Click(object sender, EventArgs e)

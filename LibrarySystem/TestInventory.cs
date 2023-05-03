@@ -10,7 +10,7 @@ namespace LibrarySystem
     {
 
         // Calls all tests
-        public void RunAllTests()
+        public static void RunAllTests()
         {
             TestCreateBook();
             TestBookSearch();
