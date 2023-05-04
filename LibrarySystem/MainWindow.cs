@@ -94,6 +94,8 @@ namespace LibrarySystem
         private void SaveBookButton_Click(object sender, EventArgs e)
         {
             uint isbn;
+            int stock;
+            double price;
             // Invalid ISBN Entry Case
             if (!(uint.TryParse(ISBNEntryBox.Text, out isbn) || double.TryParse(PriceEntryBox.Text, out double _)))
             { 
@@ -102,14 +104,14 @@ namespace LibrarySystem
                 ChangeUserEntryVisibility(false); 
                 return; 
             }
-
-            if (double.TryParse(PriceEntryBox.Text, out double price))
-                LibraryDatabase.CreateBook((int)isbn,
+            if (!int.TryParse(StockEntryBox.Text, out stock)) stock = 0;
+            if (!double.TryParse(PriceEntryBox.Text, out price)) price = 0;
+            if (!LibraryDatabase.CreateBook((int)isbn,
                     TitleEntryBox.Text, DescEntryBox.Text, AuthorEntryBox.Text,
-                    PublisherEntryBox.Text, GenreEntryBox.Text, 0, price);
-            else LibraryDatabase.CreateBook((int)isbn,
+                    PublisherEntryBox.Text, GenreEntryBox.Text, stock, price)) 
+                LibraryDatabase.EditBook((int)isbn,
                     TitleEntryBox.Text, DescEntryBox.Text, AuthorEntryBox.Text,
-                    PublisherEntryBox.Text, GenreEntryBox.Text, 0, 0);
+                    PublisherEntryBox.Text, GenreEntryBox.Text, stock, price);
             if (CoverImageBox.Visible) LibraryDatabase.GetBook((int)isbn).CoverPhoto = CoverImageBox.Image;
             // Reset Page
             CoverImageBox.Image = null;
@@ -313,7 +315,6 @@ namespace LibrarySystem
         }
 
 
-        // David do:)
         private void LoginButton_Click(object sender, EventArgs e)
         {
 
@@ -365,6 +366,8 @@ namespace LibrarySystem
             ChangeSearchVisibility(false);
             ChangeUserEntryVisibility(false);
         }
+        
+        // David do:)
         private void MainWindow_Closing(object sender, FormClosingEventArgs e)
         {
 
