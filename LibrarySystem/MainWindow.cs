@@ -94,9 +94,14 @@ namespace LibrarySystem
         private void SaveBookButton_Click(object sender, EventArgs e)
         {
             uint isbn;
-            if (!(uint.TryParse(ISBNEntryBox.Text, out isbn) ||
-                (double.TryParse(PriceEntryBox.Text, out double _))))
-            { ChangeSearchVisibility(true); ChangeBookCreateVisibility(false); ChangeUserEntryVisibility(false); return; } // Invalid Entry Case
+            // Invalid ISBN Entry Case
+            if (!(uint.TryParse(ISBNEntryBox.Text, out isbn) || double.TryParse(PriceEntryBox.Text, out double _)))
+            { 
+                ChangeSearchVisibility(true); 
+                ChangeBookCreateVisibility(false); 
+                ChangeUserEntryVisibility(false); 
+                return; 
+            }
 
             if (double.TryParse(PriceEntryBox.Text, out double price))
                 LibraryDatabase.CreateBook((int)isbn,
