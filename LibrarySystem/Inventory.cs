@@ -48,7 +48,6 @@ namespace LibrarySystem
             BookDatabase[isbn].Stock = stock;
             BookDatabase[isbn].Price = price;
             return true;
-
         }
         // Gets book by isbn (returns null if not found)
         public Book GetBook(int isbn) 

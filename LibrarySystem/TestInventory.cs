@@ -27,8 +27,17 @@ namespace LibrarySystem
         public static void TestCreateBook()
         {
             Inventory testInventory = new();
-            if (!testInventory.CreateBook(123, "ahaha", "advsun\neiaubnvaer", "Maas", "Penguin", "Adventure", 0, 15.00))
+            if (!testInventory.CreateBook(123, "Some Book", "advsun\neiaubnvaer", "Maas", "Penguin", "Adventure", 0, 15.00))
                 throw new Exception("Create Book Test Failed");
+        }
+        public static void TestEditBook()
+        {
+            Inventory testInventory = new();
+            testInventory.CreateBook(123, "Some Book", "advsun\neiaubnvaer", "Maas", "Penguin", "Adventure", 0, 15.00);
+            if (!testInventory.EditBook(123, "Another Book", "advsun\neiaubnvaer", "Maas", "Penguin", "Adventure", 0, 15.00))
+                throw new Exception("Edit Book Failed: Book not found");
+            if (testInventory.GetBook(123).Title != "Another Book")
+                throw new Exception("Edit Book Failed: Book title not changed");
         }
 
         //Book Search Tests:
