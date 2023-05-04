@@ -16,6 +16,10 @@ namespace LibrarySystem
         {
             InitializeComponent();
             TestInventory.RunAllTests();
+            // Default to User Login
+            ChangeBookCreateVisibility(false);
+            ChangeSearchVisibility(false);
+            ChangeUserEntryVisibility(true);
         }
         // Search button
         private void SearchButton_Click(object sender, EventArgs e)
