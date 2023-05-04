@@ -13,6 +13,7 @@ namespace LibrarySystem
         public static void RunAllTests()
         {
             TestCreateBook();
+            TestEditBook();
             TestBookSearch();
             TestUserSearch();
             TestisAdmin();
