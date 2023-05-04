@@ -289,7 +289,7 @@ namespace LibrarySystem
             else
             {
                 CoverImageBox.Image = null;
-                BookDescBox.Text = String.Empty;
+                BookDescBox.Text = string.Empty;
             }
         }
 
@@ -305,8 +305,8 @@ namespace LibrarySystem
 
 
             // End of Login Sequence
-            UsernameEntryBox.Text = String.Empty;
-            PasswordEntryBox.Text = String.Empty;
+            UsernameEntryBox.Text = string.Empty;
+            PasswordEntryBox.Text = string.Empty;
             ChangeUserEntryVisibility(false);
             ChangeBookCreateVisibility(false);
             ChangeSearchVisibility(true);
