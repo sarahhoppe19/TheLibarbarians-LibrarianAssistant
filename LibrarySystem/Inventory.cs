@@ -34,6 +34,22 @@ namespace LibrarySystem
                 isbn, title, description, author, publisher, genre, stock, price));
             return true;
         }
+        public bool EditBook(int isbn, string title, string description, string author,
+            string publisher, string genre, int stock, double price)
+        {
+            if (!BookDatabase.ContainsKey(isbn))
+                return false;
+            BookDatabase[isbn].ISBN = isbn;
+            BookDatabase[isbn].Title = title;
+            BookDatabase[isbn].Description = description;
+            BookDatabase[isbn].Author = author;
+            BookDatabase[isbn].Publisher = publisher;
+            BookDatabase[isbn].Genre = genre;
+            BookDatabase[isbn].Stock = stock;
+            BookDatabase[isbn].Price = price;
+            return true;
+
+        }
         // Gets book by isbn (returns null if not found)
         public Book GetBook(int isbn) 
         {
