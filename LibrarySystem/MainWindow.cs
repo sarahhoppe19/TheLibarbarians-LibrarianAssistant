@@ -365,5 +365,10 @@ namespace LibrarySystem
             ChangeSearchVisibility(false);
             ChangeUserEntryVisibility(false);
         }
+        private void MainWindow_Closing(object sender, FormClosingEventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK) { }
+
+        }
     }
 }

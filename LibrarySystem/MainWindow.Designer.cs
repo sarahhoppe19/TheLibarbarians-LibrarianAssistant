@@ -521,6 +521,7 @@
             MainMenuStrip = menuStrip1;
             Name = "MainWindow";
             Text = "Library Management System";
+            FormClosing += MainWindow_Closing;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)CoverImageBox).EndInit();
