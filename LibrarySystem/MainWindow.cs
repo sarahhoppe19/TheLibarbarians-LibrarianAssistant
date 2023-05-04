@@ -48,15 +48,15 @@ namespace LibrarySystem
             string result;
             Book curBook;
             // Loop through up to 4 search results and displays them
-            for (int i = ((CurPage-1)*4); i < BookSearchResults.Count && i < 4*CurPage; i++)
+            for (int i = ((CurPage - 1) * 4); i < BookSearchResults.Count && i < 4 * CurPage; i++)
             {
                 curBook = LibraryDatabase.GetBook(BookSearchResults[i]);
-                SetResultBox((i%4) + 1, curBook);
+                SetResultBox((i % 4) + 1, curBook);
             }
-            DisplayCurrentBookDesc(LibraryDatabase.GetBook(BookSearchResults[0+4*(CurPage-1)]));
+            DisplayCurrentBookCoverDesc(LibraryDatabase.GetBook(BookSearchResults[0 + 4 * (CurPage - 1)]));
         }
 
-        private void DisplayCurrentBookDesc(Book curBook)
+        private void DisplayCurrentBookCoverDesc(Book curBook)
         {
             CoverImageBox.Image = curBook.CoverPhoto;
             BookDescBox.Text = curBook.Description;
@@ -104,13 +104,14 @@ namespace LibrarySystem
             if (CoverImageBox.Visible) LibraryDatabase.GetBook((int)isbn).CoverPhoto = CoverImageBox.Image;
             // Reset Page
             CoverImageBox.Image = null;
-            TitleEntryBox.Text = String.Empty;
-            ISBNEntryBox.Text = String.Empty;
-            AuthorEntryBox.Text = String.Empty;
-            PublisherEntryBox.Text = String.Empty;
-            GenreEntryBox.Text = String.Empty;
-            PriceEntryBox.Text = String.Empty;
-            DescEntryBox.Text = String.Empty;
+            TitleEntryBox.Text = string.Empty;
+            ISBNEntryBox.Text = string.Empty;
+            AuthorEntryBox.Text = string.Empty;
+            PublisherEntryBox.Text = string.Empty;
+            GenreEntryBox.Text = string.Empty;
+            PriceEntryBox.Text = string.Empty;
+            DescEntryBox.Text = string.Empty;
+            StockEntryBox.Text = string.Empty;
             ChangeSearchVisibility(true);
             ChangeBookCreateVisibility(false);
             ChangeUserEntryVisibility(false);
@@ -158,6 +159,8 @@ namespace LibrarySystem
             PriceEntryBox.Visible = visibility;
             DescriptionBox.Visible = visibility;
             DescEntryBox.Visible = visibility;
+            StockBox.Visible = visibility;
+            StockEntryBox.Visible = visibility;
             AddPhotoButton.Visible = visibility;
         }
         /// <summary>
@@ -333,6 +336,25 @@ namespace LibrarySystem
                 CurPage++;
                 DisplaySearchResults();
             }
+        }
+
+        private void editBookToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (BookSearchResults == null || !(CurSelection - 1 + (CurPage - 1) * 4 < BookSearchResults.Count)) { return; }
+            Book book = LibraryDatabase.GetBook(BookSearchResults[0 + 4 * (CurPage - 1)]);
+            TitleEntryBox.Text = book.Title;
+            ISBNEntryBox.Text = book.ISBN.ToString();
+            AuthorEntryBox.Text = book.Author;
+            PublisherEntryBox.Text = book.Publisher;
+            GenreEntryBox.Text = book.Genre;
+            PriceEntryBox.Text = book.Price.ToString();
+            DescEntryBox.Text = book.Description;
+            StockEntryBox.Text = book.Stock.ToString();
+            CoverImageBox.Image = book.CoverPhoto;
+            DisplayCurrentBookCoverDesc(book);
+            ChangeBookCreateVisibility(true);
+            ChangeSearchVisibility(false);
+            ChangeUserEntryVisibility(false);
         }
     }
 }

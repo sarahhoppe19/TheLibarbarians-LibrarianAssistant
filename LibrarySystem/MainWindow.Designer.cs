@@ -72,6 +72,8 @@
             PasswordBox = new TextBox();
             PasswordEntryBox = new TextBox();
             LoginButton = new Button();
+            StockBox = new TextBox();
+            StockEntryBox = new TextBox();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)CoverImageBox).BeginInit();
             SuspendLayout();
@@ -105,14 +107,14 @@
             // createUserToolStripMenuItem
             // 
             createUserToolStripMenuItem.Name = "createUserToolStripMenuItem";
-            createUserToolStripMenuItem.Size = new Size(315, 40);
+            createUserToolStripMenuItem.Size = new Size(238, 40);
             createUserToolStripMenuItem.Text = "Create User";
             createUserToolStripMenuItem.Visible = false;
             // 
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(315, 40);
+            logoutToolStripMenuItem.Size = new Size(238, 40);
             logoutToolStripMenuItem.Text = "Logout";
             // 
             // inventoryToolStripMenuItem
@@ -134,6 +136,7 @@
             editBookToolStripMenuItem.Name = "editBookToolStripMenuItem";
             editBookToolStripMenuItem.Size = new Size(221, 40);
             editBookToolStripMenuItem.Text = "Edit Book";
+            editBookToolStripMenuItem.Click += editBookToolStripMenuItem_Click;
             // 
             // NextButton
             // 
@@ -455,11 +458,31 @@
             LoginButton.Visible = false;
             LoginButton.Click += LoginButton_Click;
             // 
+            // StockBox
+            // 
+            StockBox.Enabled = false;
+            StockBox.Location = new Point(358, 810);
+            StockBox.Name = "StockBox";
+            StockBox.Size = new Size(65, 35);
+            StockBox.TabIndex = 35;
+            StockBox.Text = "Stock:";
+            StockBox.Visible = false;
+            // 
+            // StockEntryBox
+            // 
+            StockEntryBox.Location = new Point(429, 810);
+            StockEntryBox.Name = "StockEntryBox";
+            StockEntryBox.Size = new Size(175, 35);
+            StockEntryBox.TabIndex = 36;
+            StockEntryBox.Visible = false;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1896, 1016);
+            Controls.Add(StockEntryBox);
+            Controls.Add(StockBox);
             Controls.Add(LoginButton);
             Controls.Add(PasswordEntryBox);
             Controls.Add(PasswordBox);
@@ -551,5 +574,7 @@
         private ToolStripMenuItem userToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
         private ToolStripMenuItem createUserToolStripMenuItem;
+        private TextBox StockBox;
+        private TextBox StockEntryBox;
     }
 }
