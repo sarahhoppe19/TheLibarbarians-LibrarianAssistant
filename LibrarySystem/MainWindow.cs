@@ -142,13 +142,17 @@ namespace LibrarySystem
             if (!double.TryParse(PriceEntryBox.Text, out price)) price = 0;
             if (!LibraryDatabase.CreateBook((int)isbn,
                     TitleEntryBox.Text, DescEntryBox.Text, AuthorEntryBox.Text,
-                    PublisherEntryBox.Text, GenreEntryBox.Text, stock, price))
+                    PublisherEntryBox.Text, GenreEntryBox.Text, stock, price)) 
+            {
                 LibraryDatabase.EditBook((int)isbn,
                     TitleEntryBox.Text, DescEntryBox.Text, AuthorEntryBox.Text,
                     PublisherEntryBox.Text, GenreEntryBox.Text, stock, price);
+            }
+                
             if (CoverImageBox.Visible) LibraryDatabase.GetBook((int)isbn).CoverPhoto = CoverImageBox.Image;
             // Reset Page
-
+            if (BookSearchResults != null) 
+                CoverImageBox.Image = LibraryDatabase.GetBook(BookSearchResults[CurSelection - 1 + (CurPage - 1) * 4]).CoverPhoto;
             TitleEntryBox.Text = string.Empty;
             ISBNEntryBox.Text = string.Empty;
             AuthorEntryBox.Text = string.Empty;
