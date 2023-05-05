@@ -16,6 +16,8 @@ namespace LibrarySystem
         {
             InitializeComponent();
             TestInventory.RunAllTests();
+            // Add Dev User Login
+            LibraryDatabase.CreateUser(0, "Dev", "dev", true);
             // Default to User Login
             ChangeBookCreateVisibility(false);
             ChangeSearchVisibility(false);
@@ -322,14 +324,14 @@ namespace LibrarySystem
             }
 
             // End of Login Sequence
-            UsernameEntryBox.Text = string.Empty;
-            PasswordEntryBox.Text = string.Empty;
             ChangeUserEntryVisibility(false);
             ChangeBookCreateVisibility(false);
             ChangeSearchVisibility(true);
-            userToolStripMenuItem.Text = "Welcome, Loser";
+            userToolStripMenuItem.Text = "Welcome, " + UsernameEntryBox.Text;
             userToolStripMenuItem.Visible = true;
             loginToolStripMenuItem.Visible = false;
+            UsernameEntryBox.Text = string.Empty;
+            PasswordEntryBox.Text = string.Empty;
         }
 
         private void PrevButton_Click(object sender, EventArgs e)
