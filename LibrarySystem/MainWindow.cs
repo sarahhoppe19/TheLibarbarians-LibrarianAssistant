@@ -445,16 +445,19 @@ namespace LibrarySystem
         }
         private void SaveToFile()
         {
-            using (StreamWriter writer = new StreamWriter("../../../bookdatabase.txt"))
+            if (File.Exists("../../../bookdatabase.txt"))
             {
-                List<int> allIsbns = LibraryDatabase.BookSearch("");
-                foreach (int isbn in allIsbns)
+                using (StreamWriter writer = new StreamWriter("../../../bookdatabase.txt"))
                 {
-                    Book curBook = LibraryDatabase.GetBook(isbn);
-                    writer.WriteLine(isbn + "|" + curBook.Title + "|" + curBook.Description + "|" + curBook.Author + "|" + curBook.Publisher + "|" + curBook.Genre + "|" + curBook.Stock + "|" + curBook.Price);
-                    if (curBook.CoverPhoto != null)
+                    List<int> allIsbns = LibraryDatabase.BookSearch("");
+                    foreach (int isbn in allIsbns)
                     {
-                        if (!File.Exists("../../../covers/" + isbn + ".bmp")) curBook.CoverPhoto.Save("../../../covers/" + isbn + ".bmp");
+                        Book curBook = LibraryDatabase.GetBook(isbn);
+                        writer.WriteLine(isbn + "|" + curBook.Title + "|" + curBook.Description + "|" + curBook.Author + "|" + curBook.Publisher + "|" + curBook.Genre + "|" + curBook.Stock + "|" + curBook.Price);
+                        if (curBook.CoverPhoto != null)
+                        {
+                            if (!File.Exists("../../../covers/" + isbn + ".bmp")) curBook.CoverPhoto.Save("../../../covers/" + isbn + ".bmp");
+                        }
                     }
                 }
             }
