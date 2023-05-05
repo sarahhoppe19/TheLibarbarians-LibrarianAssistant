@@ -25,13 +25,13 @@ namespace LibrarySystem
                     string coverFile = "../../../covers/" + line[0] + ".bmp";
                     if (File.Exists(coverFile))
                     {
-                        using(FileStream fs = new FileStream(coverFile, FileMode.Open))
+                        using (FileStream fs = new FileStream(coverFile, FileMode.Open))
                         {
                             LibraryDatabase.GetBook(int.Parse(line[0])).CoverPhoto = Image.FromStream(fs);
                             fs.Close();
                         }
-          
-                        
+
+
                     }
                 }
             }
@@ -45,16 +45,20 @@ namespace LibrarySystem
             ChangeBookCreateVisibility(false);
             ChangeSearchVisibility(false);
             ChangeUserEntryVisibility(true);
-           
+
         }
         // Search button
-        private void SearchButton_Click(object sender, EventArgs e)
+        private void Search()
         {
             string searchPhrase = SearchBox.Text;
             if (int.TryParse(searchPhrase, out int resultInt)) BookSearchResults = LibraryDatabase.BookSearch(resultInt);
             else BookSearchResults = LibraryDatabase.BookSearch(searchPhrase);
             CurPage = 1;
             DisplaySearchResults();
+        }
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            Search();
         }
         private void DisplaySearchResults()
         {
@@ -175,6 +179,18 @@ namespace LibrarySystem
             Upbutton.Visible = visibility;
             DownButton.Visible = visibility;
         }
+        private void SearchBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string searchPhrase = SearchBox.Text;
+                if (int.TryParse(searchPhrase, out int resultInt)) BookSearchResults = LibraryDatabase.BookSearch(resultInt);
+                else BookSearchResults = LibraryDatabase.BookSearch(searchPhrase);
+                CurPage = 1;
+                DisplaySearchResults();
+            }
+        }
+
         /// <summary>
         /// Shows/Hides Book Creating UI Elements
         /// </summary>
@@ -342,8 +358,11 @@ namespace LibrarySystem
             ChangeSearchVisibility(false);
         }
 
-
         private void LoginButton_Click(object sender, EventArgs e)
+        {
+            Login();
+        }
+        private void Login()
         {
             if (!LibraryDatabase.ValidateUser(UsernameEntryBox.Text, PasswordEntryBox.Text))
             {
@@ -400,7 +419,7 @@ namespace LibrarySystem
         private void editBookToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (BookSearchResults == null || !(CurSelection - 1 + (CurPage - 1) * 4 < BookSearchResults.Count)) { return; }
-            Book book = LibraryDatabase.GetBook(BookSearchResults[(CurSelection-1) + 4 * (CurPage - 1)]);
+            Book book = LibraryDatabase.GetBook(BookSearchResults[(CurSelection - 1) + 4 * (CurPage - 1)]);
             TitleEntryBox.Text = book.Title;
             ISBNEntryBox.Text = book.ISBN.ToString();
             AuthorEntryBox.Text = book.Author;
@@ -430,9 +449,9 @@ namespace LibrarySystem
                 {
                     Book curBook = LibraryDatabase.GetBook(isbn);
                     writer.WriteLine(isbn + "|" + curBook.Title + "|" + curBook.Description + "|" + curBook.Author + "|" + curBook.Publisher + "|" + curBook.Genre + "|" + curBook.Stock + "|" + curBook.Price);
-                    if(curBook.CoverPhoto != null)
+                    if (curBook.CoverPhoto != null)
                     {
-                        if(!File.Exists("../../../covers/" + isbn + ".bmp")) curBook.CoverPhoto.Save("../../../covers/" + isbn + ".bmp");
+                        if (!File.Exists("../../../covers/" + isbn + ".bmp")) curBook.CoverPhoto.Save("../../../covers/" + isbn + ".bmp");
                     }
                 }
             }
@@ -446,6 +465,22 @@ namespace LibrarySystem
             createUserToolStripMenuItem.Visible = false;
             userToolStripMenuItem.Visible = false;
             loginToolStripMenuItem.Visible = true;
+        }
+        private void SearchEnterKeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                Search();
+                e.Handled = true;
+            }
+        }
+        private void LoginEnterKeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                Login();
+                e.Handled = true;
+            }
         }
     }
 }
