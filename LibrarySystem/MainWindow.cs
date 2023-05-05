@@ -513,7 +513,7 @@ namespace LibrarySystem
             }
             if (!LibraryDatabase.CreateUser(int.Parse(IDEntryBox.Text), UsernameEntryBox.Text, PasswordEntryBox.Text, CheckAdminBox.Checked))
             {
-                MessageBox.Show("User Creation Failed");
+                MessageBox.Show("Username Unavailable");
                 return;
             }
             IDEntryBox.Text = string.Empty;
