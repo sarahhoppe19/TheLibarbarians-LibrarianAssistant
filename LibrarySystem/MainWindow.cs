@@ -543,6 +543,10 @@ namespace LibrarySystem
             PasswordEntryBox.Text = string.Empty;
             CheckAdminBox.Checked = false;
             DisplayCreateUserMenu(false);
+            ChangeUserEntryVisibility(false);
+            ChangeBookCreateVisibility(false);
+            ChangeSearchVisibility(true);
+
         }
         private void IDGenerateButton_Click(object sender, EventArgs e)
         {
