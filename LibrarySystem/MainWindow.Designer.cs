@@ -33,6 +33,7 @@
             userToolStripMenuItem = new ToolStripMenuItem();
             createUserToolStripMenuItem = new ToolStripMenuItem();
             logoutToolStripMenuItem = new ToolStripMenuItem();
+            checkedOutBooksToolStripMenuItem = new ToolStripMenuItem();
             inventoryToolStripMenuItem = new ToolStripMenuItem();
             addBookToolStripMenuItem = new ToolStripMenuItem();
             editBookToolStripMenuItem = new ToolStripMenuItem();
@@ -103,7 +104,7 @@
             // 
             // userToolStripMenuItem
             // 
-            userToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { createUserToolStripMenuItem, logoutToolStripMenuItem });
+            userToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { checkedOutBooksToolStripMenuItem, createUserToolStripMenuItem, logoutToolStripMenuItem });
             userToolStripMenuItem.Name = "userToolStripMenuItem";
             userToolStripMenuItem.Size = new Size(72, 34);
             userToolStripMenuItem.Text = "User";
@@ -112,7 +113,7 @@
             // createUserToolStripMenuItem
             // 
             createUserToolStripMenuItem.Name = "createUserToolStripMenuItem";
-            createUserToolStripMenuItem.Size = new Size(238, 40);
+            createUserToolStripMenuItem.Size = new Size(315, 40);
             createUserToolStripMenuItem.Text = "Create User";
             createUserToolStripMenuItem.Visible = false;
             createUserToolStripMenuItem.Click += createUserToolStripMenuItem_Click;
@@ -120,9 +121,17 @@
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(238, 40);
+            logoutToolStripMenuItem.Size = new Size(315, 40);
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
+            // 
+            // checkedOutBooksToolStripMenuItem
+            // 
+            checkedOutBooksToolStripMenuItem.Name = "checkedOutBooksToolStripMenuItem";
+            checkedOutBooksToolStripMenuItem.Size = new Size(315, 40);
+            checkedOutBooksToolStripMenuItem.Text = "Checked-Out Books";
+            checkedOutBooksToolStripMenuItem.Visible = false;
+            checkedOutBooksToolStripMenuItem.Click += checkedOutBooksToolStripMenuItem_Click;
             // 
             // inventoryToolStripMenuItem
             // 
@@ -687,5 +696,6 @@
         private Button IDGenerateButton;
         private CheckBox CheckAdminBox;
         private Button CheckoutButton;
+        private ToolStripMenuItem checkedOutBooksToolStripMenuItem;
     }
 }

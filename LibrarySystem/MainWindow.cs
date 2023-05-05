@@ -148,7 +148,7 @@ namespace LibrarySystem
             // Check for existing book
             if (!LibraryDatabase.CreateBook((int)isbn,
                     TitleEntryBox.Text, DescEntryBox.Text, AuthorEntryBox.Text,
-                    PublisherEntryBox.Text, GenreEntryBox.Text, stock, price)) 
+                    PublisherEntryBox.Text, GenreEntryBox.Text, stock, price))
             {
                 LibraryDatabase.EditBook((int)isbn,
                     TitleEntryBox.Text, DescEntryBox.Text, AuthorEntryBox.Text,
@@ -157,7 +157,7 @@ namespace LibrarySystem
             // Add Cover Image
             if (CoverImageBox.Visible) LibraryDatabase.GetBook((int)isbn).CoverPhoto = CoverImageBox.Image;
             // Reset Page
-            if (BookSearchResults != null) 
+            if (BookSearchResults != null)
                 CoverImageBox.Image = LibraryDatabase.GetBook(BookSearchResults[CurSelection - 1 + (CurPage - 1) * 4]).CoverPhoto;
             TitleEntryBox.Text = string.Empty;
             ISBNEntryBox.Text = string.Empty;
@@ -555,6 +555,13 @@ namespace LibrarySystem
                 LibraryDatabase.GetUser(CurUser).CheckedOutBooks.Add(BookSearchResults[CurSelection - 1 + (CurPage - 1) * 4]);
                 LibraryDatabase.ChangeStock(BookSearchResults[CurSelection - 1 + (CurPage - 1) * 4], -1);
             }
+        }
+
+        private void checkedOutBooksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BookSearchResults = LibraryDatabase.GetUser(CurUser).CheckedOutBooks;
+            CurPage = 1;
+            DisplaySearchResults();
         }
     }
 }
