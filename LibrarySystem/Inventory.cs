@@ -102,11 +102,11 @@ namespace LibrarySystem
         public List<int> BookSearch(string keyPhrase)
         {
             List<int> foundBookTitle = new();    // Stores the search results via titles into a list of strings
-
+            keyPhrase = keyPhrase.ToLower();
             foreach (Book b in BookDatabase.Values)
             {
-                if (b.Title.Contains(keyPhrase) || b.Publisher.Contains(keyPhrase) ||
-                    b.Author.Contains(keyPhrase) || b.Description.Contains(keyPhrase) || b.Genre.Contains(keyPhrase))
+                if (b.Title.ToLower().Contains(keyPhrase) || b.Publisher.ToLower().Contains(keyPhrase) ||
+                    b.Author.ToLower().Contains(keyPhrase) || b.Description.ToLower().Contains(keyPhrase) || b.Genre.ToLower().Contains(keyPhrase))
                 {
                     foundBookTitle.Add(b.ISBN);
                 }
