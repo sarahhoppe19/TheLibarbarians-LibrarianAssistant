@@ -9,15 +9,17 @@ namespace LibrarySystem
         private Inventory LibraryDatabase = new();
         private Image? tempPhoto;
         private List<int>? BookSearchResults; // Stores search results (can be null)
-        int? CurUser;
+        int CurUser;
         int CurSelection; // Tracks current search result selection
         int CurPage; // Tracks current page
         public MainWindow()
         {
             InitializeComponent();
             TestInventory.RunAllTests();
-            // Add Dev User Login
+            // Add Default User Logins
             LibraryDatabase.CreateUser(0, "Dev", "dev", true);
+            LibraryDatabase.CreateUser(1, "Admin", "admin", true);
+            LibraryDatabase.CreateUser(2, "User", "user", false);
             // Default to User Login
             ChangeBookCreateVisibility(false);
             ChangeSearchVisibility(false);
@@ -102,7 +104,7 @@ namespace LibrarySystem
             // Invalid ISBN Entry Case
             if (!(uint.TryParse(ISBNEntryBox.Text, out isbn)))
             {
-                var result = MessageBox.Show("Invalid ISBN. Return to form?", 
+                var result = MessageBox.Show("Invalid ISBN. Return to form?",
                     "ISBN Error", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes) returnDialog = true;
             }
@@ -111,7 +113,7 @@ namespace LibrarySystem
             if (!double.TryParse(PriceEntryBox.Text, out price)) price = 0;
             if (!LibraryDatabase.CreateBook((int)isbn,
                     TitleEntryBox.Text, DescEntryBox.Text, AuthorEntryBox.Text,
-                    PublisherEntryBox.Text, GenreEntryBox.Text, stock, price)) 
+                    PublisherEntryBox.Text, GenreEntryBox.Text, stock, price))
                 LibraryDatabase.EditBook((int)isbn,
                     TitleEntryBox.Text, DescEntryBox.Text, AuthorEntryBox.Text,
                     PublisherEntryBox.Text, GenreEntryBox.Text, stock, price);
@@ -331,6 +333,16 @@ namespace LibrarySystem
             ChangeBookCreateVisibility(false);
             ChangeSearchVisibility(true);
             userToolStripMenuItem.Text = "Welcome, " + UsernameEntryBox.Text;
+            CurUser = LibraryDatabase.GetUserID(UsernameEntryBox.Text, PasswordEntryBox.Text);
+            if (CurUser == -1) throw new Exception("Get User Failed");
+            if (LibraryDatabase.isAdmin(CurUser))
+            {
+                inventoryToolStripMenuItem.Visible = true;
+            }
+            else
+            {
+                inventoryToolStripMenuItem.Visible = false;
+            }
             userToolStripMenuItem.Visible = true;
             loginToolStripMenuItem.Visible = false;
             UsernameEntryBox.Text = string.Empty;
@@ -373,7 +385,7 @@ namespace LibrarySystem
             ChangeSearchVisibility(false);
             ChangeUserEntryVisibility(false);
         }
-        
+
         // David do:)
         private void MainWindow_Closing(object sender, FormClosingEventArgs e)
         {

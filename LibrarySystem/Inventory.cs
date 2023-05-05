@@ -147,7 +147,15 @@ namespace LibrarySystem
             }
             return null;
         }
-
+        public int GetUserID(string username, string password)
+        {
+            int id = -1;
+            foreach (User user in UserDatabase.Values)
+            {
+                if (user.Name == username && user.Password == password) id = user.ID;
+            }
+            return id;
+        }
         public bool CreateUser(int id, string username, string password, bool Admin)
         {
             if (UserDatabase.ContainsKey(id))

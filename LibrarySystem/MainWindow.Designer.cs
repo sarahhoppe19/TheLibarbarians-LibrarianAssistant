@@ -123,18 +123,19 @@
             inventoryToolStripMenuItem.Name = "inventoryToolStripMenuItem";
             inventoryToolStripMenuItem.Size = new Size(118, 34);
             inventoryToolStripMenuItem.Text = "Inventory";
+            inventoryToolStripMenuItem.Visible = false;
             // 
             // addBookToolStripMenuItem
             // 
             addBookToolStripMenuItem.Name = "addBookToolStripMenuItem";
-            addBookToolStripMenuItem.Size = new Size(221, 40);
+            addBookToolStripMenuItem.Size = new Size(315, 40);
             addBookToolStripMenuItem.Text = "Add Book";
             addBookToolStripMenuItem.Click += addBookToolStripMenuItem_Click;
             // 
             // editBookToolStripMenuItem
             // 
             editBookToolStripMenuItem.Name = "editBookToolStripMenuItem";
-            editBookToolStripMenuItem.Size = new Size(221, 40);
+            editBookToolStripMenuItem.Size = new Size(315, 40);
             editBookToolStripMenuItem.Text = "Edit Book";
             editBookToolStripMenuItem.Click += editBookToolStripMenuItem_Click;
             // 
