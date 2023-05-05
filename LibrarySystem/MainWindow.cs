@@ -25,8 +25,13 @@ namespace LibrarySystem
                     string coverFile = "../../../covers/" + line[0] + ".bmp";
                     if (File.Exists(coverFile))
                     {
-                        Image tempPhoto2 = new Bitmap(coverFile);
-                        LibraryDatabase.GetBook(int.Parse(line[0])).CoverPhoto = tempPhoto2;
+                        using(FileStream fs = new FileStream(coverFile, FileMode.Open))
+                        {
+                            LibraryDatabase.GetBook(int.Parse(line[0])).CoverPhoto = Image.FromStream(fs);
+                            fs.Close();
+                        }
+          
+                        
                     }
                 }
             }
@@ -425,11 +430,7 @@ namespace LibrarySystem
                     writer.WriteLine(isbn + "|" + curBook.Title + "|" + curBook.Description + "|" + curBook.Author + "|" + curBook.Publisher + "|" + curBook.Genre + "|" + curBook.Stock + "|" + curBook.Price);
                     if(curBook.CoverPhoto != null)
                     {
-                            if(File.Exists("../../../covers/" + isbn + ".bmp"))
-                            {
-                                File.Delete("../../../covers/" + isbn + ".bmp");
-                            } 
-                            curBook.CoverPhoto.Save("../../../covers/" + isbn + ".bmp");
+                        if(!File.Exists("../../../covers/" + isbn + ".bmp")) curBook.CoverPhoto.Save("../../../covers/" + isbn + ".bmp");
                     }
                 }
             }
