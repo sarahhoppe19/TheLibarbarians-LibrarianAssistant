@@ -461,6 +461,7 @@ namespace LibrarySystem
             ChangeBookCreateVisibility(true);
             ChangeSearchVisibility(false);
             ChangeUserEntryVisibility(false);
+            if (CoverImageBox.Image != null) CoverImageBox.Visible = true;
         }
         private void MainWindow_Closing(object sender, FormClosingEventArgs e)
         {
