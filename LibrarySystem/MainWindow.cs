@@ -211,6 +211,7 @@ namespace LibrarySystem
             UsernameEntryBox.Visible = visibility;
             PasswordBox.Visible = visibility;
             PasswordEntryBox.Visible = visibility;
+            PasswordEntryBox.PasswordChar = '*';
             LoginButton.Visible = visibility;
         }
         private void AddPhotoButton_Click(object sender, EventArgs e)
@@ -370,6 +371,7 @@ namespace LibrarySystem
             loginToolStripMenuItem.Visible = false;
             UsernameEntryBox.Text = string.Empty;
             PasswordEntryBox.Text = string.Empty;
+
             string searchPhrase = SearchBox.Text;
             if (int.TryParse(searchPhrase, out int resultInt)) BookSearchResults = LibraryDatabase.BookSearch(resultInt);
             else BookSearchResults = LibraryDatabase.BookSearch(searchPhrase);
