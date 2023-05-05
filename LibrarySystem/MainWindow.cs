@@ -363,7 +363,8 @@ namespace LibrarySystem
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            Login();
+            if (LoginButton.Text == "Login") Login();
+            else CreateUser();
         }
         private void Login()
         {
@@ -480,7 +481,8 @@ namespace LibrarySystem
         {
             if (e.KeyChar == (char)Keys.Return)
             {
-                Login();
+                if (LoginButton.Text == "Login") Login();
+                else CreateUser();
                 e.Handled = true;
             }
         }
@@ -490,17 +492,36 @@ namespace LibrarySystem
             ChangeSearchVisibility(false);
             ChangeBookCreateVisibility(false);
             ChangeUserEntryVisibility(true);
-
-            DisplayCreateUser();
+            DisplayCreateUserMenu(true);
         }
-        private void DisplayCreateUser()
+        private void DisplayCreateUserMenu(bool visibility)
         {
-            IDEntryBox.Visible = true;
-            IDBox.Visible = true;
-            IDGenerateButton.Visible = true;
-            LoginButton.Text = "Create";
+            IDEntryBox.Visible = visibility;
+            IDBox.Visible = visibility;
+            IDGenerateButton.Visible = visibility;
+            CheckAdminBox.Visible = visibility;
+            if (visibility) LoginButton.Text = "Create";
+            else LoginButton.Text = "Login";
         }
-
+        private void CreateUser()
+        {
+            if (!int.TryParse(IDEntryBox.Text, out int _)) 
+            {
+                var result = MessageBox.Show("Invalid ID. Return to form?",
+                    "ID Error", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes) return; 
+            }
+            if (!LibraryDatabase.CreateUser(int.Parse(IDEntryBox.Text), UsernameEntryBox.Text, PasswordEntryBox.Text, CheckAdminBox.Checked))
+            {
+                MessageBox.Show("User Creation Failed");
+                return;
+            }
+            IDEntryBox.Text = string.Empty;
+            UsernameEntryBox.Text = string.Empty;
+            PasswordEntryBox.Text = string.Empty;
+            CheckAdminBox.Checked = false;
+            DisplayCreateUserMenu(false);
+        }
         private void IDGenerateButton_Click(object sender, EventArgs e)
         {
             int id;

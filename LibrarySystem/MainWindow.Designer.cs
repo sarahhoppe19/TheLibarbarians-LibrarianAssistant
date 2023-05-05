@@ -77,6 +77,7 @@
             IDBox = new TextBox();
             IDEntryBox = new TextBox();
             IDGenerateButton = new Button();
+            CheckAdminBox = new CheckBox();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)CoverImageBox).BeginInit();
             SuspendLayout();
@@ -550,11 +551,23 @@
             IDGenerateButton.Visible = false;
             IDGenerateButton.Click += IDGenerateButton_Click;
             // 
+            // CheckAdminBox
+            // 
+            CheckAdminBox.AutoSize = true;
+            CheckAdminBox.Location = new Point(801, 545);
+            CheckAdminBox.Name = "CheckAdminBox";
+            CheckAdminBox.Size = new Size(100, 34);
+            CheckAdminBox.TabIndex = 40;
+            CheckAdminBox.Text = "Admin";
+            CheckAdminBox.UseVisualStyleBackColor = true;
+            CheckAdminBox.Visible = false;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1896, 1016);
+            Controls.Add(CheckAdminBox);
             Controls.Add(IDGenerateButton);
             Controls.Add(IDEntryBox);
             Controls.Add(IDBox);
@@ -658,5 +671,6 @@
         private TextBox IDBox;
         private TextBox IDEntryBox;
         private Button IDGenerateButton;
+        private CheckBox CheckAdminBox;
     }
 }
