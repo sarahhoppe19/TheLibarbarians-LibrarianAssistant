@@ -1,5 +1,6 @@
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.IO;
 
 namespace LibrarySystem
 {
@@ -14,6 +15,21 @@ namespace LibrarySystem
         int CurPage; // Tracks current page
         public MainWindow()
         {
+            CurPage = 1;
+            using (StreamReader sr = new StreamReader("../../../bookdatabase.txt"))
+            {
+                while (!sr.EndOfStream)
+                {
+                    string[] line = sr.ReadLine().Split('|');
+                    LibraryDatabase.CreateBook(int.Parse(line[0]), line[1], line[2], line[3], line[4], line[5], int.Parse(line[6]), Convert.ToDouble(line[7]));
+                    string coverFile = "../../../covers/" + line[0] + ".bmp";
+                    if (File.Exists(coverFile))
+                    {
+                        Image tempPhoto2 = new Bitmap(coverFile);
+                        LibraryDatabase.GetBook(int.Parse(line[0])).CoverPhoto = tempPhoto2;
+                    }
+                }
+            }
             InitializeComponent();
             TestInventory.RunAllTests();
             // Add Default User Logins
@@ -24,6 +40,7 @@ namespace LibrarySystem
             ChangeBookCreateVisibility(false);
             ChangeSearchVisibility(false);
             ChangeUserEntryVisibility(true);
+           
         }
         // Search button
         private void SearchButton_Click(object sender, EventArgs e)
@@ -348,6 +365,11 @@ namespace LibrarySystem
             loginToolStripMenuItem.Visible = false;
             UsernameEntryBox.Text = string.Empty;
             PasswordEntryBox.Text = string.Empty;
+            string searchPhrase = SearchBox.Text;
+            if (int.TryParse(searchPhrase, out int resultInt)) BookSearchResults = LibraryDatabase.BookSearch(resultInt);
+            else BookSearchResults = LibraryDatabase.BookSearch(searchPhrase);
+            CurPage = 1;
+            DisplaySearchResults();
         }
 
         private void PrevButton_Click(object sender, EventArgs e)
@@ -371,7 +393,7 @@ namespace LibrarySystem
         private void editBookToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (BookSearchResults == null || !(CurSelection - 1 + (CurPage - 1) * 4 < BookSearchResults.Count)) { return; }
-            Book book = LibraryDatabase.GetBook(BookSearchResults[0 + 4 * (CurPage - 1)]);
+            Book book = LibraryDatabase.GetBook(BookSearchResults[(CurSelection-1) + 4 * (CurPage - 1)]);
             TitleEntryBox.Text = book.Title;
             ISBNEntryBox.Text = book.ISBN.ToString();
             AuthorEntryBox.Text = book.Author;
@@ -390,7 +412,27 @@ namespace LibrarySystem
         // David do:)
         private void MainWindow_Closing(object sender, FormClosingEventArgs e)
         {
-
+            SaveToFile();
+        }
+        private void SaveToFile()
+        {
+            using (StreamWriter writer = new StreamWriter("../../../bookdatabase.txt"))
+            {
+                List<int> allIsbns = LibraryDatabase.BookSearch("");
+                foreach (int isbn in allIsbns)
+                {
+                    Book curBook = LibraryDatabase.GetBook(isbn);
+                    writer.WriteLine(isbn + "|" + curBook.Title + "|" + curBook.Description + "|" + curBook.Author + "|" + curBook.Publisher + "|" + curBook.Genre + "|" + curBook.Stock + "|" + curBook.Price);
+                    if(curBook.CoverPhoto != null)
+                    {
+                            if(File.Exists("../../../covers/" + isbn + ".bmp"))
+                            {
+                                File.Delete("../../../covers/" + isbn + ".bmp");
+                            } 
+                            curBook.CoverPhoto.Save("../../../covers/" + isbn + ".bmp");
+                    }
+                }
+            }
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
