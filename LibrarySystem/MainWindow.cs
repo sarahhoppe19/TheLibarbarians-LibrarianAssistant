@@ -281,7 +281,13 @@ namespace LibrarySystem
             Bitmap bmpCrop = bmpImage.Clone(cropArea, bmpImage.PixelFormat);
             return (Image)(bmpCrop);
         }
-        // Resizes image while maintaining good quality
+        /// <summary>
+        /// Resizes image while maintaining good quality
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <returns></returns>
         // Found at: https://stackoverflow.com/questions/1922040/how-to-resize-an-image-c-sharp
         private static Bitmap ResizeImage(Image image, int width, int height)
         {
