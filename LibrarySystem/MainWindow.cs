@@ -252,13 +252,13 @@ namespace LibrarySystem
         }
         private void AddPhotoButton_Click(object sender, EventArgs e)
         {
-            CoverImageBox.Visible = true;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 tempPhoto = new Bitmap(openFileDialog1.FileName);
                 tempPhoto = ResizeImage(tempPhoto, CoverImageBox.Width, CoverImageBox.Height);
                 CoverImageBox.Image = tempPhoto;
             }
+            CoverImageBox.Visible = true;
         }
         /// <summary>
         /// Crops target image to book aspect ratio
