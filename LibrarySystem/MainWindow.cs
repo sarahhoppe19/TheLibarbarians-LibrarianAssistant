@@ -445,8 +445,6 @@ namespace LibrarySystem
         }
         private void SaveToFile()
         {
-            if (File.Exists("../../../bookdatabase.txt"))
-            {
                 using (StreamWriter writer = new StreamWriter("../../../bookdatabase.txt"))
                 {
                     List<int> allIsbns = LibraryDatabase.BookSearch("");
@@ -460,7 +458,6 @@ namespace LibrarySystem
                         }
                     }
                 }
-            }
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
