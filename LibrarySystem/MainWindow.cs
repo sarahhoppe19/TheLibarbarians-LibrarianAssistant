@@ -244,7 +244,11 @@ namespace LibrarySystem
                 CoverImageBox.Image = tempPhoto;
             }
         }
-        // Crops target image to book aspect ratio
+        /// <summary>
+        /// Crops target image to book aspect ratio
+        /// </summary>
+        /// <param name="img"></param>
+        /// <returns>Cropped Image</returns>
         private static Image CropImage(Image img)
         {
             int width = img.Width;
@@ -536,7 +540,11 @@ namespace LibrarySystem
 
         private void CheckoutButton_Click(object sender, EventArgs e)
         {
-
+            if (BookSearchResults != null)
+            {
+                LibraryDatabase.GetUser(CurUser).CheckedOutBooks.Add(BookSearchResults[CurSelection - 1 + (CurPage - 1) * 4]);
+                LibraryDatabase.ChangeStock(BookSearchResults[CurSelection - 1 + (CurPage - 1) * 4], -1);
+            }
         }
     }
 }

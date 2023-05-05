@@ -199,11 +199,11 @@
             // 
             // BookDescBox
             // 
-            BookDescBox.Enabled = false;
             BookDescBox.Location = new Point(1305, 540);
             BookDescBox.Margin = new Padding(3, 4, 3, 4);
             BookDescBox.Multiline = true;
             BookDescBox.Name = "BookDescBox";
+            BookDescBox.ScrollBars = ScrollBars.Vertical;
             BookDescBox.Size = new Size(546, 308);
             BookDescBox.TabIndex = 6;
             // 
@@ -396,6 +396,7 @@
             DescEntryBox.Margin = new Padding(3, 4, 3, 4);
             DescEntryBox.Multiline = true;
             DescEntryBox.Name = "DescEntryBox";
+            DescEntryBox.ScrollBars = ScrollBars.Vertical;
             DescEntryBox.Size = new Size(607, 150);
             DescEntryBox.TabIndex = 25;
             DescEntryBox.Visible = false;

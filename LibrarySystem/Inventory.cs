@@ -55,6 +55,10 @@ namespace LibrarySystem
             if (!BookDatabase.ContainsKey(isbn)) return null;
             return BookDatabase[isbn]; 
         }
+        public void ChangeStock(int isbn, int stock)
+        {
+            if (BookDatabase.ContainsKey(isbn)) BookDatabase[isbn].Stock += stock;
+        }
         // Returns a file location as a string from save file dialog - Empty string is not found
         public string GetSaveFileLocation()
         {
