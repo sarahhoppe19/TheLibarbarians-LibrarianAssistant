@@ -181,6 +181,7 @@ namespace LibrarySystem
             SearchButton.Visible = visibility;
             Upbutton.Visible = visibility;
             DownButton.Visible = visibility;
+            CheckoutButton.Visible = visibility;
         }
         private void SearchBox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -505,11 +506,11 @@ namespace LibrarySystem
         }
         private void CreateUser()
         {
-            if (!int.TryParse(IDEntryBox.Text, out int _)) 
+            if (!int.TryParse(IDEntryBox.Text, out int _))
             {
                 var result = MessageBox.Show("Invalid ID. Return to form?",
                     "ID Error", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes) return; 
+                if (result == DialogResult.Yes) return;
             }
             if (!LibraryDatabase.CreateUser(int.Parse(IDEntryBox.Text), UsernameEntryBox.Text, PasswordEntryBox.Text, CheckAdminBox.Checked))
             {
@@ -531,6 +532,11 @@ namespace LibrarySystem
                 id = rnd.Next();
             } while (LibraryDatabase.GetUser(id) != null);
             IDEntryBox.Text = id.ToString();
+        }
+
+        private void CheckoutButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

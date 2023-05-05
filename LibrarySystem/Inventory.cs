@@ -160,6 +160,10 @@ namespace LibrarySystem
         {
             if (UserDatabase.ContainsKey(id))
                 return false;
+            foreach (User u in UserDatabase.Values)
+            {
+                if (u.Name == username) return false;
+            }
             UserDatabase.Add(id, new User(id, username, password, Admin));
             if (UserDatabase.ContainsKey(id))
                 return true;

@@ -78,6 +78,7 @@
             IDEntryBox = new TextBox();
             IDGenerateButton = new Button();
             CheckAdminBox = new CheckBox();
+            CheckoutButton = new Button();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)CoverImageBox).BeginInit();
             SuspendLayout();
@@ -562,11 +563,23 @@
             CheckAdminBox.UseVisualStyleBackColor = true;
             CheckAdminBox.Visible = false;
             // 
+            // CheckoutButton
+            // 
+            CheckoutButton.Location = new Point(1517, 855);
+            CheckoutButton.Name = "CheckoutButton";
+            CheckoutButton.Size = new Size(131, 40);
+            CheckoutButton.TabIndex = 41;
+            CheckoutButton.Text = "Checkout";
+            CheckoutButton.UseVisualStyleBackColor = true;
+            CheckoutButton.Visible = false;
+            CheckoutButton.Click += CheckoutButton_Click;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1896, 1016);
+            Controls.Add(CheckoutButton);
             Controls.Add(CheckAdminBox);
             Controls.Add(IDGenerateButton);
             Controls.Add(IDEntryBox);
@@ -672,5 +685,6 @@
         private TextBox IDEntryBox;
         private Button IDGenerateButton;
         private CheckBox CheckAdminBox;
+        private Button CheckoutButton;
     }
 }
