@@ -424,6 +424,7 @@ namespace LibrarySystem
             else BookSearchResults = LibraryDatabase.BookSearch(searchPhrase);
             CurPage = 1;
             DisplaySearchResults();
+            CheckoutButton.Text = "Checkout";
         }
 
         private void PrevButton_Click(object sender, EventArgs e)
@@ -559,12 +560,12 @@ namespace LibrarySystem
 
         private void CheckoutButton_Click(object sender, EventArgs e)
         {
-            if (CheckoutButton.Text == "return")
+            if (CheckoutButton.Text == "Return")
             {
-                if (BookSearchResults != null)
+                if (BookSearchResults != null && BookSearchResults.Count > 0)
                 {
-                    LibraryDatabase.GetUser(CurUser).CheckedOutBooks.Remove(BookSearchResults[CurSelection - 1 + (CurPage - 1) * 4]);
                     LibraryDatabase.ChangeStock(BookSearchResults[CurSelection - 1 + (CurPage - 1) * 4], 1);
+                    LibraryDatabase.GetUser(CurUser).CheckedOutBooks.Remove(BookSearchResults[CurSelection - 1 + (CurPage - 1) * 4]);
                 }
             }
             else
@@ -580,6 +581,16 @@ namespace LibrarySystem
         private void checkedOutBooksToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BookSearchResults = LibraryDatabase.GetUser(CurUser).CheckedOutBooks;
+            if (BookSearchResults != null && BookSearchResults.Count > 0) 
+            { 
+                CoverImageBox.Image = LibraryDatabase.GetBook(BookSearchResults[0]).CoverPhoto; 
+                BookDescBox.Text = LibraryDatabase.GetBook(BookSearchResults[0]).Description;
+            }
+            else
+            {
+                CoverImageBox.Image = null;
+                BookDescBox.Text = string.Empty;
+            }
             CurPage = 1;
             DisplaySearchResults();
             CheckoutButton.Text = "Return";
