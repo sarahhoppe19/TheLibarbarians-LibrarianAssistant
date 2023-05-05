@@ -98,10 +98,8 @@ namespace LibrarySystem
             double price;
             // Invalid ISBN Entry Case
             if (!(uint.TryParse(ISBNEntryBox.Text, out isbn) || double.TryParse(PriceEntryBox.Text, out double _)))
-            { 
-                ChangeSearchVisibility(true); 
-                ChangeBookCreateVisibility(false); 
-                ChangeUserEntryVisibility(false); 
+            {
+                MessageBox.Show("Invalid ISBN");
                 return; 
             }
             if (!int.TryParse(StockEntryBox.Text, out stock)) stock = 0;
@@ -317,7 +315,11 @@ namespace LibrarySystem
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-
+            if (!LibraryDatabase.ValidateUser(UsernameEntryBox.Text, PasswordEntryBox.Text))
+            {
+                MessageBox.Show("Invalid Login");
+                return;
+            }
 
             // End of Login Sequence
             UsernameEntryBox.Text = string.Empty;
