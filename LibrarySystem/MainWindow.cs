@@ -15,6 +15,7 @@ namespace LibrarySystem
         int CurPage; // Tracks current page
         public MainWindow()
         {
+            InitializeComponent();
             CurPage = 1;
             if (File.Exists("../../../bookdatabase.txt"))
             {
@@ -29,7 +30,7 @@ namespace LibrarySystem
                         {
                             using (FileStream fs = new FileStream(coverFile, FileMode.Open))
                             {
-                                LibraryDatabase.GetBook(int.Parse(line[0])).CoverPhoto = Image.FromStream(fs);
+                                LibraryDatabase.GetBook(int.Parse(line[0])).CoverPhoto = ResizeImage(Image.FromStream(fs), CoverImageBox.Width, CoverImageBox.Height);
                                 fs.Close();
                             }
 
@@ -38,7 +39,6 @@ namespace LibrarySystem
                     }
                 }
             }
-            InitializeComponent();
             TestInventory.RunAllTests();
             // Add Default User Logins
             LibraryDatabase.CreateUser(0, "Dev", "dev", true);
@@ -239,7 +239,7 @@ namespace LibrarySystem
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 tempPhoto = new Bitmap(openFileDialog1.FileName);
-                tempPhoto = ResizeImage(tempPhoto, 300, 450);
+                tempPhoto = ResizeImage(tempPhoto, CoverImageBox.Width, CoverImageBox.Height);
                 CoverImageBox.Image = tempPhoto;
             }
         }
