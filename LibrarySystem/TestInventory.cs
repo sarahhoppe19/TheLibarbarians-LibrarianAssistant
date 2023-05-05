@@ -8,8 +8,9 @@ namespace LibrarySystem
 {
     internal static class TestInventory
     {
-
-        // Calls all tests
+        /// <summary>
+        /// Calls all tests
+        /// </summary>
         public static void RunAllTests()
         {
             TestCreateBook();
@@ -41,7 +42,6 @@ namespace LibrarySystem
                 throw new Exception("Edit Book Failed: Book title not changed");
         }
 
-        //Book Search Tests:
         public static void TestBookSearch()
         {
             Inventory testInventory = new();
@@ -60,8 +60,6 @@ namespace LibrarySystem
                 throw new Exception("Book Search Failed (Book was found but wrong Genre)");
         }
 
-
-        //User Search tests:
         public static void TestUserSearch()
         {
             Inventory testInventory = new();
@@ -73,7 +71,6 @@ namespace LibrarySystem
             if (!testInventory.UserSearch(012345678).Contains(012345678))
                 throw new Exception("User Search Failed (Could not find created user)");
         }
-        //isAdmin test
         public static void TestisAdmin()
         {
             Inventory testInventory = new();
@@ -81,8 +78,6 @@ namespace LibrarySystem
             if (!testInventory.GetUser(010101010).Admin)
                 throw new Exception("Admin Check Failed (User was created as admin but returned false)");
         }
-
-        //Extra Tests: ( GetBook, GetUser, etc.) - Boaz
 
         public static void TestGetBook()
         {

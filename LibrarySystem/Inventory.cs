@@ -49,7 +49,11 @@ namespace LibrarySystem
             BookDatabase[isbn].Price = price;
             return true;
         }
-        // Gets book by isbn (returns null if not found)
+        /// <summary>
+        /// Gets book by isbn (returns null if not found)
+        /// </summary>
+        /// <param name="isbn"></param>
+        /// <returns></returns>
         public Book GetBook(int isbn) 
         {
             if (!BookDatabase.ContainsKey(isbn)) return null;
@@ -59,7 +63,10 @@ namespace LibrarySystem
         {
             if (BookDatabase.ContainsKey(isbn)) BookDatabase[isbn].Stock += stock;
         }
-        // Returns a file location as a string from save file dialog - Empty string is not found
+        /// <summary>
+        /// Returns a file location as a string from save file dialog - Empty string is not found
+        /// </summary>
+        /// <returns></returns>
         public string GetSaveFileLocation()
         {
             SaveFileDialog saveFileDialog2 = new ();
@@ -69,8 +76,11 @@ namespace LibrarySystem
             }
             return String.Empty;
         }
-
-        //Search for User
+        /// <summary>
+        /// Search for User
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public List<int> UserSearch(int id)
         {
             List<int> foundUsers = new();  // Store search results in a list of ints
@@ -85,8 +95,11 @@ namespace LibrarySystem
             foundUsers.Sort(); // Sort for easy ID access
             return foundUsers;
         }
-
-        // Search for Book(s) via the ISBN
+        /// <summary>
+        /// Search for Book(s) via the ISBN
+        /// </summary>
+        /// <param name="isbn"></param>
+        /// <returns></returns>
         public List<int> BookSearch(int isbn)
         {
             List<int> foundBookIsbn = new();    // Stores all the search results into a list of ints for the isbn numbers
@@ -101,8 +114,11 @@ namespace LibrarySystem
             foundBookIsbn.Sort();   // Sorts the results for easy ID access
             return foundBookIsbn;
         }
-
-        // Search for Book(s) via keyword
+        /// <summary>
+        /// Search for Book(s) via keyword
+        /// </summary>
+        /// <param name="keyPhrase"></param>
+        /// <returns></returns>
         public List<int> BookSearch(string keyPhrase)
         {
             List<int> foundBookTitle = new();    // Stores the search results via titles into a list of strings
@@ -117,14 +133,23 @@ namespace LibrarySystem
             }
             return foundBookTitle;
         }
-
+        /// <summary>
+        /// Checks for admin priviledge
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>bool for admin</returns>
         public bool isAdmin(int id)
         {
             if (UserDatabase.ContainsKey(id) && UserDatabase[id].Admin) return true;
             return false;
         }
-
-        public bool ValidateUser(string username, string password)  //used to login and validate the email matches the password
+        /// <summary>
+        /// Checks for matching user and password
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public bool ValidateUser(string username, string password)
         {
             foreach(User u in UserDatabase.Values)
             {
@@ -178,8 +203,5 @@ namespace LibrarySystem
         {
             return UserDatabase[id].CheckedOutBooks;
         }
-
-
-
     }
 }

@@ -18,7 +18,9 @@ namespace LibrarySystem
         public double Price { get; set; }
         public Image? CoverPhoto { get; set; } // Cover will be null upon creation
         
-        // Default Constructor
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         public Book()
         {
             ISBN = 0;
@@ -30,7 +32,17 @@ namespace LibrarySystem
             Price = 0;
             Genre = string.Empty;
         }
-        // Overloaded Constructor
+        /// <summary>
+        /// Overloaded Constructor
+        /// </summary>
+        /// <param name="isbn"></param>
+        /// <param name="title"></param>
+        /// <param name="description"></param>
+        /// <param name="author"></param>
+        /// <param name="publisher"></param>
+        /// <param name="genre"></param>
+        /// <param name="stock"></param>
+        /// <param name="price"></param>
         public Book(int isbn, string title, 
             string description,  string author, string publisher, string genre, int stock, double price)
         {

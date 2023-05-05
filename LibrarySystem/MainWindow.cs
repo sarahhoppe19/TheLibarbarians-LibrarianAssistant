@@ -50,7 +50,6 @@ namespace LibrarySystem
             ChangeUserEntryVisibility(true);
 
         }
-        // Search button
         private void Search()
         {
             CheckoutButton.Text = "Checkout";
@@ -97,13 +96,16 @@ namespace LibrarySystem
                 CheckoutButton.Enabled = true;
             }
         }
-
         private void DisplayCurrentBookCoverDesc(Book curBook)
         {
             CoverImageBox.Image = curBook.CoverPhoto;
             BookDescBox.Text = curBook.Description;
         }
-        // Sets target result box with book info
+        /// <summary>
+        /// Sets target result box with book info
+        /// </summary>
+        /// <param name="resultBox"></param>
+        /// <param name="curBook"></param>
         private void SetResultBox(int resultBox, Book curBook)
         {
             if (curBook == null) { CoverImageBox.Image = null; DescriptionBox.Text = String.Empty; return; }
@@ -121,7 +123,6 @@ namespace LibrarySystem
                     ResultBox4.Text = text; break;
             }
         }
-        // Add-Book Menu Button Fuctionality
         private void addBookToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Hide all boxes
@@ -280,7 +281,6 @@ namespace LibrarySystem
             Bitmap bmpCrop = bmpImage.Clone(cropArea, bmpImage.PixelFormat);
             return (Image)(bmpCrop);
         }
-
         // Resizes image while maintaining good quality
         // Found at: https://stackoverflow.com/questions/1922040/how-to-resize-an-image-c-sharp
         private static Bitmap ResizeImage(Image image, int width, int height)
@@ -307,7 +307,6 @@ namespace LibrarySystem
 
             return destImage;
         }
-
         private void Upbutton_Click(object sender, EventArgs e)
         {
             if (CurSelection < 2) return;
@@ -342,7 +341,6 @@ namespace LibrarySystem
                 CheckoutButton.Enabled = false;
             }
         }
-
         private void DownButton_Click(object sender, EventArgs e)
         {
             if (CurSelection > 3) return;
@@ -377,14 +375,12 @@ namespace LibrarySystem
                 CheckoutButton.Enabled = false;
             }
         }
-
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ChangeUserEntryVisibility(true);
             ChangeBookCreateVisibility(false);
             ChangeSearchVisibility(false);
         }
-
         private void LoginButton_Click(object sender, EventArgs e)
         {
             if (LoginButton.Text == "Login") Login();
@@ -426,7 +422,6 @@ namespace LibrarySystem
             DisplaySearchResults();
             CheckoutButton.Text = "Checkout";
         }
-
         private void PrevButton_Click(object sender, EventArgs e)
         {
             if (CurPage > 1)
@@ -435,7 +430,6 @@ namespace LibrarySystem
                 DisplaySearchResults();
             }
         }
-
         private void NextButton_Click(object sender, EventArgs e)
         {
             if (BookSearchResults != null && BookSearchResults.Count > (CurPage * 4))
@@ -444,7 +438,6 @@ namespace LibrarySystem
                 DisplaySearchResults();
             }
         }
-
         private void editBookToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (BookSearchResults == null || !(CurSelection - 1 + (CurPage - 1) * 4 < BookSearchResults.Count)) { return; }
@@ -467,6 +460,9 @@ namespace LibrarySystem
         {
             SaveToFile();
         }
+        /// <summary>
+        /// Saves database to file
+        /// </summary>
         private void SaveToFile()
         {
             using (StreamWriter writer = new StreamWriter("../../../bookdatabase.txt"))
@@ -483,7 +479,6 @@ namespace LibrarySystem
                 }
             }
         }
-
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ChangeBookCreateVisibility(false);
@@ -511,7 +506,6 @@ namespace LibrarySystem
                 e.Handled = true;
             }
         }
-
         private void createUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ChangeSearchVisibility(false);
@@ -528,6 +522,9 @@ namespace LibrarySystem
             if (visibility) LoginButton.Text = "Create";
             else LoginButton.Text = "Login";
         }
+        /// <summary>
+        /// Creates a user in the database
+        /// </summary>
         private void CreateUser()
         {
             if (!int.TryParse(IDEntryBox.Text, out int _))
@@ -557,7 +554,6 @@ namespace LibrarySystem
             } while (LibraryDatabase.GetUser(id) != null);
             IDEntryBox.Text = id.ToString();
         }
-
         private void CheckoutButton_Click(object sender, EventArgs e)
         {
             if (CheckoutButton.Text == "Return")
@@ -576,8 +572,8 @@ namespace LibrarySystem
                     LibraryDatabase.ChangeStock(BookSearchResults[CurSelection - 1 + (CurPage - 1) * 4], -1);
                 }
             }
+            DisplaySearchResults();
         }
-
         private void checkedOutBooksToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BookSearchResults = LibraryDatabase.GetUser(CurUser).CheckedOutBooks;
