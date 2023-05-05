@@ -467,8 +467,8 @@ namespace LibrarySystem
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ChangeBookCreateVisibility(false);
-            ChangeSearchVisibility(true);
-            ChangeUserEntryVisibility(false);
+            ChangeSearchVisibility(false);
+            ChangeUserEntryVisibility(true);
             createUserToolStripMenuItem.Visible = false;
             inventoryToolStripMenuItem.Visible = false;
             userToolStripMenuItem.Visible = false;
