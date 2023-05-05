@@ -437,27 +437,25 @@ namespace LibrarySystem
             ChangeSearchVisibility(false);
             ChangeUserEntryVisibility(false);
         }
-
-        // David do:)
         private void MainWindow_Closing(object sender, FormClosingEventArgs e)
         {
             SaveToFile();
         }
         private void SaveToFile()
         {
-                using (StreamWriter writer = new StreamWriter("../../../bookdatabase.txt"))
+            using (StreamWriter writer = new StreamWriter("../../../bookdatabase.txt"))
+            {
+                List<int> allIsbns = LibraryDatabase.BookSearch("");
+                foreach (int isbn in allIsbns)
                 {
-                    List<int> allIsbns = LibraryDatabase.BookSearch("");
-                    foreach (int isbn in allIsbns)
+                    Book curBook = LibraryDatabase.GetBook(isbn);
+                    writer.WriteLine(isbn + "|" + curBook.Title + "|" + curBook.Description + "|" + curBook.Author + "|" + curBook.Publisher + "|" + curBook.Genre + "|" + curBook.Stock + "|" + curBook.Price);
+                    if (curBook.CoverPhoto != null)
                     {
-                        Book curBook = LibraryDatabase.GetBook(isbn);
-                        writer.WriteLine(isbn + "|" + curBook.Title + "|" + curBook.Description + "|" + curBook.Author + "|" + curBook.Publisher + "|" + curBook.Genre + "|" + curBook.Stock + "|" + curBook.Price);
-                        if (curBook.CoverPhoto != null)
-                        {
-                            if (!File.Exists("../../../covers/" + isbn + ".bmp")) curBook.CoverPhoto.Save("../../../covers/" + isbn + ".bmp");
-                        }
+                        if (!File.Exists("../../../covers/" + isbn + ".bmp")) curBook.CoverPhoto.Save("../../../covers/" + isbn + ".bmp");
                     }
                 }
+            }
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -485,6 +483,33 @@ namespace LibrarySystem
                 Login();
                 e.Handled = true;
             }
+        }
+
+        private void createUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeSearchVisibility(false);
+            ChangeBookCreateVisibility(false);
+            ChangeUserEntryVisibility(true);
+
+            DisplayCreateUser();
+        }
+        private void DisplayCreateUser()
+        {
+            IDEntryBox.Visible = true;
+            IDBox.Visible = true;
+            IDGenerateButton.Visible = true;
+            LoginButton.Text = "Create";
+        }
+
+        private void IDGenerateButton_Click(object sender, EventArgs e)
+        {
+            int id;
+            Random rnd = new();
+            do
+            {
+                id = rnd.Next();
+            } while (LibraryDatabase.GetUser(id) != null);
+            IDEntryBox.Text = id.ToString();
         }
     }
 }
