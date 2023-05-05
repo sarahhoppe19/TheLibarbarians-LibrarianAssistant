@@ -138,8 +138,14 @@ namespace LibrarySystem
                 if (result == DialogResult.Yes) returnDialog = true;
             }
             if (returnDialog) return;
-            if (!int.TryParse(StockEntryBox.Text, out stock)) stock = 0;
-            if (!double.TryParse(PriceEntryBox.Text, out price)) price = 0;
+            if (DescEntryBox.Text.Contains("\n"))
+            {
+                MessageBox.Show("Description Cannot Contain Newlines");
+                return;
+            }
+            if (!int.TryParse(StockEntryBox.Text, out stock)) stock = 0; // Invalid Stock
+            if (!double.TryParse(PriceEntryBox.Text, out price)) price = 0; // Invalid Price
+            // Check for existing book
             if (!LibraryDatabase.CreateBook((int)isbn,
                     TitleEntryBox.Text, DescEntryBox.Text, AuthorEntryBox.Text,
                     PublisherEntryBox.Text, GenreEntryBox.Text, stock, price)) 
@@ -148,7 +154,7 @@ namespace LibrarySystem
                     TitleEntryBox.Text, DescEntryBox.Text, AuthorEntryBox.Text,
                     PublisherEntryBox.Text, GenreEntryBox.Text, stock, price);
             }
-                
+            // Add Cover Image
             if (CoverImageBox.Visible) LibraryDatabase.GetBook((int)isbn).CoverPhoto = CoverImageBox.Image;
             // Reset Page
             if (BookSearchResults != null) 
