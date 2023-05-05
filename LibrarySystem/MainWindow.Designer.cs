@@ -107,15 +107,16 @@
             // createUserToolStripMenuItem
             // 
             createUserToolStripMenuItem.Name = "createUserToolStripMenuItem";
-            createUserToolStripMenuItem.Size = new Size(238, 40);
+            createUserToolStripMenuItem.Size = new Size(315, 40);
             createUserToolStripMenuItem.Text = "Create User";
             createUserToolStripMenuItem.Visible = false;
             // 
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(238, 40);
+            logoutToolStripMenuItem.Size = new Size(315, 40);
             logoutToolStripMenuItem.Text = "Logout";
+            logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 
             // inventoryToolStripMenuItem
             // 
@@ -128,14 +129,14 @@
             // addBookToolStripMenuItem
             // 
             addBookToolStripMenuItem.Name = "addBookToolStripMenuItem";
-            addBookToolStripMenuItem.Size = new Size(315, 40);
+            addBookToolStripMenuItem.Size = new Size(221, 40);
             addBookToolStripMenuItem.Text = "Add Book";
             addBookToolStripMenuItem.Click += addBookToolStripMenuItem_Click;
             // 
             // editBookToolStripMenuItem
             // 
             editBookToolStripMenuItem.Name = "editBookToolStripMenuItem";
-            editBookToolStripMenuItem.Size = new Size(315, 40);
+            editBookToolStripMenuItem.Size = new Size(221, 40);
             editBookToolStripMenuItem.Text = "Edit Book";
             editBookToolStripMenuItem.Click += editBookToolStripMenuItem_Click;
             // 

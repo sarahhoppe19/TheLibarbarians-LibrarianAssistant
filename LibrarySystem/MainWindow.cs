@@ -338,6 +338,7 @@ namespace LibrarySystem
             if (LibraryDatabase.isAdmin(CurUser))
             {
                 inventoryToolStripMenuItem.Visible = true;
+                createUserToolStripMenuItem.Visible = true;
             }
             else
             {
@@ -390,6 +391,16 @@ namespace LibrarySystem
         private void MainWindow_Closing(object sender, FormClosingEventArgs e)
         {
 
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeBookCreateVisibility(false);
+            ChangeSearchVisibility(false);
+            ChangeUserEntryVisibility(true);
+            createUserToolStripMenuItem.Visible = false;
+            userToolStripMenuItem.Visible = false;
+            loginToolStripMenuItem.Visible = true;
         }
     }
 }
