@@ -53,6 +53,7 @@ namespace LibrarySystem
         // Search button
         private void Search()
         {
+            CheckoutButton.Text = "Checkout";
             string searchPhrase = SearchBox.Text;
             if (int.TryParse(searchPhrase, out int resultInt)) BookSearchResults = LibraryDatabase.BookSearch(resultInt);
             else BookSearchResults = LibraryDatabase.BookSearch(searchPhrase);
@@ -91,6 +92,10 @@ namespace LibrarySystem
                 SetResultBox((i % 4) + 1, curBook);
             }
             DisplayCurrentBookCoverDesc(LibraryDatabase.GetBook(BookSearchResults[0 + 4 * (CurPage - 1)]));
+            if (BookSearchResults.Count > 0 + CurPage - 1)
+            {
+                CheckoutButton.Enabled = true;
+            }
         }
 
         private void DisplayCurrentBookCoverDesc(Book curBook)
@@ -328,11 +333,13 @@ namespace LibrarySystem
                 temp = LibraryDatabase.GetBook(BookSearchResults[CurSelection - 1 + (CurPage - 1) * 4]);
                 CoverImageBox.Image = temp.CoverPhoto;
                 BookDescBox.Text = temp.Description;
+                CheckoutButton.Enabled = true;
             }
             else
             {
                 CoverImageBox.Image = null;
                 BookDescBox.Text = String.Empty;
+                CheckoutButton.Enabled = false;
             }
         }
 
@@ -361,11 +368,13 @@ namespace LibrarySystem
                 temp = LibraryDatabase.GetBook(BookSearchResults[CurSelection - 1 + (CurPage - 1) * 4]);
                 CoverImageBox.Image = temp.CoverPhoto;
                 BookDescBox.Text = temp.Description;
+                CheckoutButton.Enabled = true;
             }
             else
             {
                 CoverImageBox.Image = null;
                 BookDescBox.Text = string.Empty;
+                CheckoutButton.Enabled = false;
             }
         }
 
@@ -550,10 +559,21 @@ namespace LibrarySystem
 
         private void CheckoutButton_Click(object sender, EventArgs e)
         {
-            if (BookSearchResults != null)
+            if (CheckoutButton.Text == "return")
             {
-                LibraryDatabase.GetUser(CurUser).CheckedOutBooks.Add(BookSearchResults[CurSelection - 1 + (CurPage - 1) * 4]);
-                LibraryDatabase.ChangeStock(BookSearchResults[CurSelection - 1 + (CurPage - 1) * 4], -1);
+                if (BookSearchResults != null)
+                {
+                    LibraryDatabase.GetUser(CurUser).CheckedOutBooks.Remove(BookSearchResults[CurSelection - 1 + (CurPage - 1) * 4]);
+                    LibraryDatabase.ChangeStock(BookSearchResults[CurSelection - 1 + (CurPage - 1) * 4], 1);
+                }
+            }
+            else
+            {
+                if (BookSearchResults != null)
+                {
+                    LibraryDatabase.GetUser(CurUser).CheckedOutBooks.Add(BookSearchResults[CurSelection - 1 + (CurPage - 1) * 4]);
+                    LibraryDatabase.ChangeStock(BookSearchResults[CurSelection - 1 + (CurPage - 1) * 4], -1);
+                }
             }
         }
 
@@ -562,6 +582,7 @@ namespace LibrarySystem
             BookSearchResults = LibraryDatabase.GetUser(CurUser).CheckedOutBooks;
             CurPage = 1;
             DisplaySearchResults();
+            CheckoutButton.Text = "Return";
         }
     }
 }

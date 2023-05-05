@@ -31,9 +31,9 @@
             menuStrip1 = new MenuStrip();
             loginToolStripMenuItem = new ToolStripMenuItem();
             userToolStripMenuItem = new ToolStripMenuItem();
+            checkedOutBooksToolStripMenuItem = new ToolStripMenuItem();
             createUserToolStripMenuItem = new ToolStripMenuItem();
             logoutToolStripMenuItem = new ToolStripMenuItem();
-            checkedOutBooksToolStripMenuItem = new ToolStripMenuItem();
             inventoryToolStripMenuItem = new ToolStripMenuItem();
             addBookToolStripMenuItem = new ToolStripMenuItem();
             editBookToolStripMenuItem = new ToolStripMenuItem();
@@ -110,6 +110,13 @@
             userToolStripMenuItem.Text = "User";
             userToolStripMenuItem.Visible = false;
             // 
+            // checkedOutBooksToolStripMenuItem
+            // 
+            checkedOutBooksToolStripMenuItem.Name = "checkedOutBooksToolStripMenuItem";
+            checkedOutBooksToolStripMenuItem.Size = new Size(315, 40);
+            checkedOutBooksToolStripMenuItem.Text = "Checked-Out Books";
+            checkedOutBooksToolStripMenuItem.Click += checkedOutBooksToolStripMenuItem_Click;
+            // 
             // createUserToolStripMenuItem
             // 
             createUserToolStripMenuItem.Name = "createUserToolStripMenuItem";
@@ -124,14 +131,6 @@
             logoutToolStripMenuItem.Size = new Size(315, 40);
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
-            // 
-            // checkedOutBooksToolStripMenuItem
-            // 
-            checkedOutBooksToolStripMenuItem.Name = "checkedOutBooksToolStripMenuItem";
-            checkedOutBooksToolStripMenuItem.Size = new Size(315, 40);
-            checkedOutBooksToolStripMenuItem.Text = "Checked-Out Books";
-            checkedOutBooksToolStripMenuItem.Visible = false;
-            checkedOutBooksToolStripMenuItem.Click += checkedOutBooksToolStripMenuItem_Click;
             // 
             // inventoryToolStripMenuItem
             // 
