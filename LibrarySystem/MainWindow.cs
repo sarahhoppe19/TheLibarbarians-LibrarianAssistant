@@ -16,22 +16,25 @@ namespace LibrarySystem
         public MainWindow()
         {
             CurPage = 1;
-            using (StreamReader sr = new StreamReader("../../../bookdatabase.txt"))
+            if (File.Exists("../../../bookdatabase.txt"))
             {
-                while (!sr.EndOfStream)
+                using (StreamReader sr = new StreamReader("../../../bookdatabase.txt"))
                 {
-                    string[] line = sr.ReadLine().Split('|');
-                    LibraryDatabase.CreateBook(int.Parse(line[0]), line[1], line[2], line[3], line[4], line[5], int.Parse(line[6]), Convert.ToDouble(line[7]));
-                    string coverFile = "../../../covers/" + line[0] + ".bmp";
-                    if (File.Exists(coverFile))
+                    while (!sr.EndOfStream)
                     {
-                        using (FileStream fs = new FileStream(coverFile, FileMode.Open))
+                        string[] line = sr.ReadLine().Split('|');
+                        LibraryDatabase.CreateBook(int.Parse(line[0]), line[1], line[2], line[3], line[4], line[5], int.Parse(line[6]), Convert.ToDouble(line[7]));
+                        string coverFile = "../../../covers/" + line[0] + ".bmp";
+                        if (File.Exists(coverFile))
                         {
-                            LibraryDatabase.GetBook(int.Parse(line[0])).CoverPhoto = Image.FromStream(fs);
-                            fs.Close();
+                            using (FileStream fs = new FileStream(coverFile, FileMode.Open))
+                            {
+                                LibraryDatabase.GetBook(int.Parse(line[0])).CoverPhoto = Image.FromStream(fs);
+                                fs.Close();
+                            }
+
+
                         }
-
-
                     }
                 }
             }
