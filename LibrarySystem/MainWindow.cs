@@ -98,12 +98,15 @@ namespace LibrarySystem
             uint isbn;
             int stock;
             double price;
+            bool returnDialog = false;
             // Invalid ISBN Entry Case
-            if (!(uint.TryParse(ISBNEntryBox.Text, out isbn) || double.TryParse(PriceEntryBox.Text, out double _)))
+            if (!(uint.TryParse(ISBNEntryBox.Text, out isbn)))
             {
-                MessageBox.Show("Invalid ISBN");
-                return; 
+                var result = MessageBox.Show("Invalid ISBN. Return to form?", 
+                    "ISBN Error", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes) returnDialog = true;
             }
+            if (returnDialog) return;
             if (!int.TryParse(StockEntryBox.Text, out stock)) stock = 0;
             if (!double.TryParse(PriceEntryBox.Text, out price)) price = 0;
             if (!LibraryDatabase.CreateBook((int)isbn,
