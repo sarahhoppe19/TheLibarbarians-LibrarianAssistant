@@ -141,7 +141,7 @@ namespace LibrarySystem
                     PublisherEntryBox.Text, GenreEntryBox.Text, stock, price);
             if (CoverImageBox.Visible) LibraryDatabase.GetBook((int)isbn).CoverPhoto = CoverImageBox.Image;
             // Reset Page
-            CoverImageBox.Image = null;
+
             TitleEntryBox.Text = string.Empty;
             ISBNEntryBox.Text = string.Empty;
             AuthorEntryBox.Text = string.Empty;
