@@ -19,6 +19,7 @@ namespace LibrarySystem
             CurPage = 1;
             if (File.Exists("../../../bookdatabase.txt"))
             {
+                //Reads books from file
                 using (StreamReader sr = new StreamReader("../../../bookdatabase.txt"))
                 {
                     while (!sr.EndOfStream)
@@ -38,6 +39,8 @@ namespace LibrarySystem
                         }
                     }
                 }
+
+                //reads users from file
                 using (StreamReader sr = new StreamReader("../../../userdatabase.txt"))
                 {
                     while (!sr.EndOfStream)
@@ -63,6 +66,10 @@ namespace LibrarySystem
             ChangeUserEntryVisibility(true);
 
         }
+
+        /// <summary>
+        /// Generic function for calling a search
+        /// </summary>
         private void Search()
         {
             CheckoutButton.Text = "Checkout";

@@ -32,6 +32,11 @@ namespace LibrarySystem
             if (!testInventory.CreateBook(123, "Some Book", "advsun\neiaubnvaer", "Maas", "Penguin", "Adventure", 0, 15.00))
                 throw new Exception("Create Book Test Failed");
         }
+
+        /// <summary>
+        /// Tests EditBook()
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         public static void TestEditBook()
         {
             Inventory testInventory = new();
@@ -42,6 +47,11 @@ namespace LibrarySystem
                 throw new Exception("Edit Book Failed: Book title not changed");
         }
 
+
+        /// <summary>
+        /// Tests Book Searches
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         public static void TestBookSearch()
         {
             Inventory testInventory = new();
@@ -60,6 +70,10 @@ namespace LibrarySystem
                 throw new Exception("Book Search Failed (Book was found but wrong Genre)");
         }
 
+        /// <summary>
+        /// Tests User Searches
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         public static void TestUserSearch()
         {
             Inventory testInventory = new();
@@ -71,6 +85,11 @@ namespace LibrarySystem
             if (!testInventory.UserSearch(012345678).Contains(012345678))
                 throw new Exception("User Search Failed (Could not find created user)");
         }
+
+        /// <summary>
+        /// Tests Admin Validation
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         public static void TestisAdmin()
         {
             Inventory testInventory = new();
@@ -79,6 +98,11 @@ namespace LibrarySystem
                 throw new Exception("Admin Check Failed (User was created as admin but returned false)");
         }
 
+
+        /// <summary>
+        /// Tests GetBook()
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         public static void TestGetBook()
         {
             Inventory testInventory = new();
@@ -91,6 +115,10 @@ namespace LibrarySystem
             }
         }
 
+        /// <summary>
+        /// Tests GetUser()
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         public static void TestGetUser()
         {
             Inventory testInventory = new();

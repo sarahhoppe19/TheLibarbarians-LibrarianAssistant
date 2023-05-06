@@ -115,6 +115,10 @@ namespace LibrarySystem
             return foundBookIsbn;
         }
 
+        /// <summary>
+        /// Returns list of all users, sorted by ID
+        /// </summary>
+        /// <returns></returns>
         public List<int> GetUserList()
         {
             List<int> foundUsers = new();  // Store search results in a list of ints

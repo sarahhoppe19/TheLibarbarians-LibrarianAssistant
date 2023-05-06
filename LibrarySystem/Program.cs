@@ -1,3 +1,16 @@
+/*
+ *  Group: The Libarbarians
+ *  Project: Librarian Assistant
+ * 
+ * Authors:
+ *  Sarah Hoppe
+ *  Boaz Glassberg
+ *  Grace Covarrubias
+ *  Tywin Cary
+ *  David Hofsetz
+ *  
+ */
+
 namespace LibrarySystem
 {
     internal static class Program
