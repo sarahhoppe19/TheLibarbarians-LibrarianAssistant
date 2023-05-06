@@ -114,6 +114,17 @@ namespace LibrarySystem
             foundBookIsbn.Sort();   // Sorts the results for easy ID access
             return foundBookIsbn;
         }
+
+        public List<int> GetUserList()
+        {
+            List<int> foundUsers = new();  // Store search results in a list of ints
+            foreach (User u in UserDatabase.Values)
+            {
+                foundUsers.Add(u.ID);
+            }
+            foundUsers.Sort(); // Sort for easy ID access
+            return foundUsers;
+        }
         /// <summary>
         /// Search for Book(s) via keyword
         /// </summary>

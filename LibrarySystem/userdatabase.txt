@@ -1,0 +1,4 @@
+0|Dev| dev|True
+1|Admin|admin|True
+2|User|user|False
+1701|dbrighthd|dbrighthd|True

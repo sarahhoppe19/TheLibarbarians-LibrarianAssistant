@@ -38,9 +38,22 @@ namespace LibrarySystem
                         }
                     }
                 }
+                using (StreamReader sr = new StreamReader("../../../userdatabase.txt"))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        string[] line = sr.ReadLine().Split("|");
+                        if (LibraryDatabase.GetUser(int.Parse(line[0])) == null)
+                        {
+                            LibraryDatabase.CreateUser(int.Parse(line[0]), line[1], line[2], Boolean.Parse(line[3]));
+                        }
+                    }
+
+                }
+
             }
             TestInventory.RunAllTests();
-            // Add Default User Logins
+            // Add Default User Logins, fallback in case loading from file fails.
             LibraryDatabase.CreateUser(0, "Dev", "dev", true);
             LibraryDatabase.CreateUser(1, "Admin", "admin", true);
             LibraryDatabase.CreateUser(2, "User", "user", false);
@@ -484,7 +497,17 @@ namespace LibrarySystem
                         if (!File.Exists("../../../covers/" + isbn + ".bmp")) curBook.CoverPhoto.Save("../../../covers/" + isbn + ".bmp");
                     }
                 }
+                
             }
+            using (StreamWriter writer = new StreamWriter("../../../userdatabase.txt"))
+            {
+                List<int> allUserIds = LibraryDatabase.GetUserList();
+                foreach (int id in allUserIds)
+                {
+                    writer.WriteLine(id + "|" + LibraryDatabase.GetUser(id).Name + "|" + LibraryDatabase.GetUser(id).Password + "|" + LibraryDatabase.GetUser(id).Admin);
+                }
+            }
+
         }
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
